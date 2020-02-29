@@ -3,10 +3,13 @@ package framework;
 
 import java.util.Random;
 
+import Exceptions.FacesException;
+
 public class De implements Comparable {
 
     static final int MAX_FACES = 6;
-    Random rand = new Random(MAX_FACES);
+    static final int MIN_NUMBER = 1;
+    Random rand = new Random();
 
     private int currentFace = 0;
 
@@ -14,8 +17,12 @@ public class De implements Comparable {
         this.currentFace = currentFace;
     }
 
-    public void setCurrentFace(int currentFace){
-        this.currentFace = currentFace;
+    public void setCurrentFace(int currentFace) throws FacesException{
+    	if (currentFace <= MAX_FACES && currentFace >= 1) {
+    		this.currentFace = currentFace;
+    	} else {
+    		throw new FacesException();
+    	}
     }
 
     public int getCurrentFace(){
@@ -23,7 +30,7 @@ public class De implements Comparable {
     }
 
     public void rollDe(){
-        currentFace = rand.nextInt();
+        currentFace = rand.nextInt(MAX_FACES - MIN_NUMBER + 1) + MIN_NUMBER;
     }
 
     @Override
@@ -31,9 +38,9 @@ public class De implements Comparable {
         De comparableDe = (De) o;
 
         try{
-            if(comparableDe.getCurrentFace() > currentFace){
+            if(currentFace < comparableDe.getCurrentFace()){
                 return 1;
-            } else if (comparableDe.getCurrentFace() < currentFace){
+            } else if (currentFace > comparableDe.getCurrentFace()){
                 return -1;
             } else if (comparableDe.getCurrentFace() == currentFace){
                 return 0;
