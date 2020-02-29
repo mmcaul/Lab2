@@ -8,7 +8,8 @@ import Exceptions.FacesException;
 public class De implements Comparable {
 
     static final int MAX_FACES = 6;
-    Random rand = new Random(MAX_FACES);
+    static final int MIN_NUMBER = 1;
+    Random rand = new Random();
 
     private int currentFace = 0;
 
@@ -29,7 +30,7 @@ public class De implements Comparable {
     }
 
     public void rollDe(){
-        currentFace = rand.nextInt();
+        currentFace = rand.nextInt(MAX_FACES - MIN_NUMBER + 1) + MIN_NUMBER;
     }
 
     @Override

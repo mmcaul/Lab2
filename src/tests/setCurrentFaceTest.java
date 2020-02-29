@@ -1,4 +1,4 @@
-package framework.tests;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,9 +18,15 @@ class setCurrentFaceTest {
 	}
 	
 	@Test
-	void test2() throws FacesException{
+	void test2() throws FacesException {
 		De de1 = new De(1);
 		assertThrows(FacesException.class, () -> de1.setCurrentFace(7));
+	}
+	
+	@Test
+	void test3() throws FacesException {
+		De de1 = new De(2);
+		assertThrows(FacesException.class, () -> de1.setCurrentFace(0));
 	}
 
 }
