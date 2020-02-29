@@ -3,6 +3,8 @@ package framework;
 
 import java.util.Random;
 
+import Exceptions.FacesException;
+
 public class De implements Comparable {
 
     static final int MAX_FACES = 6;
@@ -14,8 +16,12 @@ public class De implements Comparable {
         this.currentFace = currentFace;
     }
 
-    public void setCurrentFace(int currentFace){
-        this.currentFace = currentFace;
+    public void setCurrentFace(int currentFace) throws FacesException{
+    	if (currentFace <= MAX_FACES && currentFace >= 1) {
+    		this.currentFace = currentFace;
+    	} else {
+    		throw new FacesException();
+    	}
     }
 
     public int getCurrentFace(){
@@ -31,9 +37,9 @@ public class De implements Comparable {
         De comparableDe = (De) o;
 
         try{
-            if(comparableDe.getCurrentFace() > currentFace){
+            if(currentFace < comparableDe.getCurrentFace()){
                 return 1;
-            } else if (comparableDe.getCurrentFace() < currentFace){
+            } else if (currentFace > comparableDe.getCurrentFace()){
                 return -1;
             } else if (comparableDe.getCurrentFace() == currentFace){
                 return 0;

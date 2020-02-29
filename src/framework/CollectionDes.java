@@ -19,5 +19,4 @@ public class CollectionDes {
         return new DeIterator(tabDes);
     }
 
-
 }

@@ -11,7 +11,6 @@ public class BuncoStrategy implements GameStrategy {
     public int calculerScoreTour(){
         int score = 0;
 
-
         return score;
     }
 

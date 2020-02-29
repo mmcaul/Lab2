@@ -19,5 +19,4 @@ public class CollectionJoueur {
         return new JoueurIterator(tabJoueurs);
     }
 
-
 }
