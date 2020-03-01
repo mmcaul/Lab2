@@ -20,8 +20,12 @@ public class DeIterator implements Iterator {
         }
     }
 
+    public De get(){
+        return des[position];
+    }
+
     @Override
-    public Object next() {
+    public De next() {
         De de = des[position];
         position = position + 1;
         return de;

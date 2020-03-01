@@ -1,6 +1,6 @@
 package framework;
 
-public class Jeu {
+public class Jeu implements GameStrategy {
 
     private DeIterator deIterator;
     private JoueurIterator joueurIterator;
@@ -15,4 +15,13 @@ public class Jeu {
         this.strategieJeu = strategieJeu;
     }
 
+    @Override
+    public Joueur calculerLeVainqueur() {
+        return null;
+    }
+
+    @Override
+    public int calculerScoreTour() {
+        return 0;
+    }
 }
