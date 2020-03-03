@@ -2,7 +2,7 @@ package framework;
 
 public class CollectionJoueur {
 
-    int numOfJoueurs = 0;
+    int numOfJoueurs;
     Joueur[] tabJoueurs;
 
     public CollectionJoueur(int numOfJoueurs){
@@ -11,8 +11,9 @@ public class CollectionJoueur {
     }
 
     public void addJoueur(Joueur joueur){
-        numOfJoueurs++;
-        tabJoueurs[numOfJoueurs] = joueur;
+        for(int i=0; i<numOfJoueurs; i++){
+            tabJoueurs[i] = joueur;
+        }
     }
 
     public JoueurIterator createIterator(){
