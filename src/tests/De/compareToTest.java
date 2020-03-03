@@ -1,4 +1,4 @@
-package tests;
+package tests.De;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,7 +9,7 @@ import framework.De;
 class compareToTest {
 
 	@Test
-	void inferiorrTest() {
+	void inferiorTest() {
 		De de1 = new De(4);
 		De de2 = new De(5);
 		int output = de1.compareTo(de2);
