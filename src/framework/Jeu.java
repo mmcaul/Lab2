@@ -75,5 +75,6 @@ public abstract class Jeu implements GameStrategy{
         if(sc.hasNextInt()){
             nbTours = sc.nextInt();
         }
+
     }
 }
