@@ -22,6 +22,15 @@ public class Jeu implements GameStrategy {
 
     @Override
     public int calculerScoreTour() {
+        int size = 0;
+
+        for (int i = 0; i < deIterator.size(); i++){
+            if (deIterator.get() == numTours){
+                score ++;
+            }
+            
+        }
+
         return 0;
     }
 }
