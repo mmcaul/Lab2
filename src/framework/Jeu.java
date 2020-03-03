@@ -2,6 +2,8 @@ package framework;
 
 public class Jeu implements GameStrategy {
 
+    private final int BUNCO = 21;
+
     private DeIterator deIterator;
     private JoueurIterator joueurIterator;
     private GameStrategy strategieJeu;
@@ -22,13 +24,21 @@ public class Jeu implements GameStrategy {
 
     @Override
     public int calculerScoreTour() {
-        int size = 0;
+        int scoreTot = 0;
 
-        for (int i = 0; i < deIterator.size(); i++){
-            if (deIterator.get() == numTours){
-                score ++;
+        while (deIterator.hasNext()){
+            int scoreRoll = 0;
+
+            for (int i = 0; i < 3; i ++){
+                if (deIterator.get().getCurrentFace() == numTours) {
+                    scoreRoll++;
+                }
             }
-            
+            if (scoreRoll == 3){
+                scoreTot += BUNCO;
+            } else {
+                scoreTot += scoreRoll;
+            }
         }
 
         return 0;
