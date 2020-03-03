@@ -2,21 +2,22 @@ package framework;
 
 public class CollectionDes {
 
-    static final int MAX_DES = 3;
     int numOfDes = 0;
     De[] tabDes;
 
-    public CollectionDes(){
-        tabDes = new De[MAX_DES];
+    public CollectionDes(int nbDes){
+        numOfDes = nbDes;
+        tabDes = new De[nbDes];
     }
 
     public void addDe(De de){
-        tabDes[numOfDes] = de;
         numOfDes++;
+        tabDes[numOfDes] = de;
     }
 
     public DeIterator createIterator(){
         return new DeIterator(tabDes);
     }
+
 
 }
