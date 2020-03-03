@@ -1,23 +1,23 @@
 package jeuBunco;
 
-import framework.GameStrategy;
+import framework.Jeu;
 import framework.Joueur;
 
-public class BuncoStrategy implements GameStrategy {
-
+public class BuncoStrategy extends Jeu {
     static final int MAX_TOURS = 6;
 
     @Override
-    public int calculerScoreTour(){
+    public void calculerScoreTour(){
         int score = 0;
 
-        return score;
+
     }
 
     @Override
-    public Joueur calculerLeVainqueur(){
+    public Joueur calculerLeVaiqueur() {
         Joueur winner = new Joueur(1); //NOT OFFICIAL, need to implement strategy
 
         return winner;
     }
+
 }
