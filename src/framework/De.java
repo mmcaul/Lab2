@@ -8,7 +8,7 @@ public class De implements Comparable {
 
     private int currentFace = 0;
     private int maxFaces;
-    Random rand = new Random(maxFaces);
+    Random rand = new Random();
 
     public De(int maxFaces){
         this.maxFaces = maxFaces;
@@ -23,7 +23,7 @@ public class De implements Comparable {
     }
 
     public void rollDe(){
-        currentFace = rand.nextInt();
+        currentFace = rand.nextInt(maxFaces);
     }
 
     @Override

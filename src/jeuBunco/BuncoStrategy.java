@@ -10,35 +10,54 @@ public class BuncoStrategy extends Jeu {
     private static final int DE_PAR_TOUR = 3;
     private static final int BUNCO = 21;
 
-    public BuncoStrategy(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
+    /*public BuncoStrategy(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
                          int numTours, GameStrategy strategieJeu){
         super(collectionDes, collectionJoueur, numTours, strategieJeu);
-    }
+    }*/
 
     @Override
-    public void calculerScoreTour() {
+    public void calculerScoreTour(Joueur joueurCourant, int tourCourant) {
 
-        int scoreTourJoueur = 0;
+        int scoreTourBunco, scoreTour, scoreTourTotal = 0;
+        int scoreDe = 0;
+        De currentDe;
+        De previousDe = null;
 
-        while(joueurIterator.hasNext()){
-            Joueur joueurCourant = joueurIterator.next();
-
+        while(scoreDe == tourCourant) {
             while(deIterator.hasNext()){
-                int scoreRoll = 0;
+                scoreTour = 0;
+                scoreTourBunco = 0;
 
-                for (int i = 0; i < DE_PAR_TOUR; i++) {
-                    if (deIterator.next().getCurrentFace() == numTours) {
-                        scoreRoll++;
+                currentDe = deIterator.next();
+
+                currentDe.rollDe();
+
+                scoreDe = currentDe.getCurrentFace();
+
+                if (scoreDe == tourCourant) {
+                    scoreTourBunco++;
+                }
+                if(previousDe != null){
+                    if (currentDe.compareTo(previousDe) == 0) {
+                        scoreTour++;
                     }
                 }
-                if (scoreRoll == 3) {
-                    scoreTourJoueur += BUNCO;
+                previousDe = currentDe;
+
+                if(scoreTourBunco == DE_PAR_TOUR) {
+                    scoreTourTotal = BUNCO;
+                } else if(scoreTour == DE_PAR_TOUR) {
+                    scoreTourTotal = 5;
+                } else if(scoreTour == 0){
+                    joueurCourant.setScore(scoreTourTotal);
                 } else {
-                    scoreTourJoueur += scoreRoll;
+                    scoreTourTotal += scoreTourBunco;
                 }
+                joueurCourant.setScore(scoreTourTotal);
             }
-            joueurCourant.setScore(scoreTourJoueur);
         }
+
+
     }
 
     @Override

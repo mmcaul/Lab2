@@ -6,9 +6,9 @@ public class Main {
 	
     public static void main(String[] args) {
 
-		/*Jeu monJeu = new BuncoStrategy();
+		Jeu monJeu = new BuncoStrategy();
 
 		monJeu.commencerJeu();
-    	*/
+
     }
 }
