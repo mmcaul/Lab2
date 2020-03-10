@@ -17,7 +17,7 @@ public abstract class Jeu implements GameStrategy{
     CollectionDes tabNbDes;
     DeIterator desIterator;
 
-    public abstract int calculerScoreTour();
+    public abstract void calculerScoreTour();
     public abstract Joueur calculerLeVaiqueur();
 
     public Jeu(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
