@@ -6,6 +6,7 @@ import framework.Joueur;
 
 public class BuncoStrategy extends Jeu {
     static final int MAX_TOURS = 6;
+    static final int DE_PAR_TOUR = 3;
 
     public BuncoStrategy(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
                          int numTours, GameStrategy strategieJeu){
@@ -19,8 +20,8 @@ public class BuncoStrategy extends Jeu {
         while (deIterator.hasNext()) {
             int scoreRoll = 0;
 
-            for (int i = 0; i < 3; i++) {
-                if (deIterator.get().getCurrentFace() == numTours) {
+            for (int i = 0; i < DE_PAR_TOUR; i++) {
+                if (deIterator.get(i).getCurrentFace() == numTours) {
                     scoreRoll++;
                 }
             }
