@@ -16,25 +16,29 @@ public class BuncoStrategy extends Jeu {
     }
 
     @Override
-    public int calculerScoreTour() {
-        int scoreTot = 0;
+    public void calculerScoreTour() {
 
-        while (deIterator.hasNext()) {
-            int scoreRoll = 0;
+        int scoreTourJoueur = 0;
 
-            for (int i = 0; i < DE_PAR_TOUR; i++) {
-                if (deIterator.next().getCurrentFace() == numTours) {
-                    scoreRoll++;
+        while(joueurIterator.hasNext()){
+            Joueur joueurCourant = joueurIterator.next();
+
+            while(deIterator.hasNext()){
+                int scoreRoll = 0;
+
+                for (int i = 0; i < DE_PAR_TOUR; i++) {
+                    if (deIterator.next().getCurrentFace() == numTours) {
+                        scoreRoll++;
+                    }
+                }
+                if (scoreRoll == 3) {
+                    scoreTourJoueur += BUNCO;
+                } else {
+                    scoreTourJoueur += scoreRoll;
                 }
             }
-            if (scoreRoll == 3) {
-                scoreTot += BUNCO;
-            } else {
-                scoreTot += scoreRoll;
-            }
+            joueurCourant.setScore(scoreTourJoueur);
         }
-
-        return 0;
     }
 
     @Override
