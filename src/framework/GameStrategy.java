@@ -4,7 +4,7 @@ import framework.Joueur;
 
 public interface GameStrategy {
 
-    public Joueur calculerLeVainqueur();
+    public Joueur[] calculerLeVainqueur(Jeu jeu);
     public int calculerScoreTour();
 
 }
