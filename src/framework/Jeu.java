@@ -1,80 +1,46 @@
 package framework;
 
-import java.util.Scanner;
+public class Jeu implements GameStrategy {
 
-public abstract class Jeu implements GameStrategy{
+    private final int BUNCO = 21;
 
-    Scanner sc = new Scanner(System.in);
-    int nbToursFait = 0;
-    int nbJoueurs, nbDes, nbFaceDe, nbTours;
-    CollectionJoueur tabNbJoueurs;
-    JoueurIterator joueurIterator;
-    CollectionDes tabNbDes;
-    DeIterator desIterator;
+    private DeIterator deIterator;
+    private JoueurIterator joueurIterator;
+    private GameStrategy strategieJeu;
+    private int numTours;
 
-    public abstract void calculerScoreTour();
-    public abstract Joueur calculerLeVaiqueur();
-
-
-    public final void commencerJeu(){
-
-        setNbJoueurs();
-        setNbFaceDe();
-        setNbTours();
-
-        while(nbToursFait != nbTours){
-
-            for(int i=0;i<nbJoueurs; i++){
-                calculerScoreTour();
-            }
-            calculerLeVaiqueur();
-            nbToursFait++;
-        }
+    public Jeu(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
+               int numTours, GameStrategy strategieJeu){
+        deIterator = collectionDes.createIterator();
+        joueurIterator = collectionJoueur.createIterator();
+        this.numTours = numTours;
+        this.strategieJeu = strategieJeu;
     }
 
-    public void setNbJoueurs(){
-        System.out.println("Combien de joueurs veulent jouer?");
-        System.out.print(">>");
-
-        if(sc.hasNextInt()){
-            nbJoueurs = sc.nextInt();
-            tabNbJoueurs = new CollectionJoueur(nbJoueurs);
-
-            for(int i=0; i<nbJoueurs; i++){
-                tabNbJoueurs.addJoueur(new Joueur(i));
-            }
-            joueurIterator = tabNbJoueurs.createIterator();
-        }
+    @Override
+    public Joueur calculerLeVainqueur() {
+        return null;
     }
 
-    public void setNbFaceDe(){
-        System.out.println("Combien de dés allez-vous utiliser?");
-        System.out.print(">>");
+    @Override
+    public int calculerScoreTour() {
+        int scoreTot = 0;
 
-        if(sc.hasNextInt()){
-            nbDes = sc.nextInt();
-            tabNbDes = new CollectionDes(nbDes);
+        while (deIterator.hasNext()){
+            int scoreRoll = 0;
 
-            System.out.println("Combien de faces ont vos dés?");
-            System.out.print(">>");
-
-            if(sc.hasNextInt()){
-                nbFaceDe = sc.nextInt();
+            for (int i = 0; i < 3; i ++){
+                if (deIterator.get().getCurrentFace() == numTours) {
+                    scoreRoll++;
+                }
             }
-
-            for(int i=0; i<nbDes; i++){
-                tabNbDes.addDe(new De(nbFaceDe));
+            if (scoreRoll == 3){
+                scoreTot += BUNCO;
+            } else {
+                scoreTot += scoreRoll;
             }
-            desIterator = tabNbDes.createIterator();
-        }
-    }
-
-    public void setNbTours(){
-        System.out.println("Combien de tours voulez-vous jouer?");
-        System.out.print(">>");
-        if(sc.hasNextInt()){
-            nbTours = sc.nextInt();
         }
 
+        return 0;
     }
 }

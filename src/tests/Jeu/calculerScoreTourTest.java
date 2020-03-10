@@ -21,5 +21,6 @@ public class calculerScoreTourTest {
         colDe.addDe(de2);
         colDe.addDe(de3);
 
+
     }
 }
