@@ -36,10 +36,6 @@ public class BuncoStrategy extends Jeu {
                 } else {
                     scoreTourJoueur += scoreRoll;
                 }
-
-
-
-
             }
             joueurCourant.setScore(scoreTourJoueur);
         }

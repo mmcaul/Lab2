@@ -39,7 +39,6 @@ public class DeTest {
     @Test(expected=IllegalArgumentException.class)
     public void deNullTest(){
         de1.setCurrentFace(4);
-        assertEquals(-99,de1.compareTo(null));
+        de1.compareTo(null);
     }
-
 }

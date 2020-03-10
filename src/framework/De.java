@@ -1,6 +1,7 @@
 package framework;
 
 
+import java.sql.SQLOutput;
 import java.util.Random;
 
 public class De implements Comparable {
@@ -26,19 +27,19 @@ public class De implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Object o) throws IllegalArgumentException{
         De comparableDe = (De) o;
 
-        try{
-            if(comparableDe.getCurrentFace() > currentFace){
+        if(o == null){
+            throw new IllegalArgumentException();
+        } else {
+            if (comparableDe.getCurrentFace() > currentFace) {
                 return 1;
-            } else if (comparableDe.getCurrentFace() < currentFace){
+            } else if (comparableDe.getCurrentFace() < currentFace) {
                 return -1;
-            } else if (comparableDe.getCurrentFace() == currentFace){
+            } else if (comparableDe.getCurrentFace() == currentFace) {
                 return 0;
             }
-        } catch (IllegalArgumentException e){
-            System.out.println("Invalid entry!");
         }
         return -99;
     }
