@@ -6,9 +6,9 @@ import framework.Joueur;
 
 public class BuncoStrategy extends Jeu {
 
-    static final int MAX_TOURS = 6;
-    static final int DE_PAR_TOUR = 3;
-    static final int BUNCO = 21;
+    private static final int MAX_TOURS = 6;
+    private static final int DE_PAR_TOUR = 3;
+    private static final int BUNCO = 21;
 
     public BuncoStrategy(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
                          int numTours, GameStrategy strategieJeu){
