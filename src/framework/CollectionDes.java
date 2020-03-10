@@ -11,8 +11,9 @@ public class CollectionDes {
     }
 
     public void addDe(De de){
-        numOfDes++;
-        tabDes[numOfDes] = de;
+        for(int i=0; i<numOfDes; i++){
+            tabDes[i] = de;
+        }
     }
 
     public DeIterator createIterator(){
