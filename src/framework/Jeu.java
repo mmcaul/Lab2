@@ -1,20 +1,32 @@
 package framework;
 
+
 import java.util.Scanner;
 
 public abstract class Jeu implements GameStrategy{
+
+    protected DeIterator deIterator;
+    protected JoueurIterator joueurIterator;
+    protected GameStrategy strategieJeu;
+    protected int numTours;
 
     Scanner sc = new Scanner(System.in);
     int nbToursFait = 0;
     int nbJoueurs, nbDes, nbFaceDe, nbTours;
     CollectionJoueur tabNbJoueurs;
-    JoueurIterator joueurIterator;
     CollectionDes tabNbDes;
     DeIterator desIterator;
 
-    public abstract void calculerScoreTour();
+    public abstract int calculerScoreTour();
     public abstract Joueur calculerLeVaiqueur();
 
+    public Jeu(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
+               int numTours, GameStrategy strategieJeu) {
+        deIterator = collectionDes.createIterator();
+        joueurIterator = collectionJoueur.createIterator();
+        this.numTours = numTours;
+        this.strategieJeu = strategieJeu;
+    }
 
     public final void commencerJeu(){
 
@@ -75,6 +87,5 @@ public abstract class Jeu implements GameStrategy{
         if(sc.hasNextInt()){
             nbTours = sc.nextInt();
         }
-
     }
 }

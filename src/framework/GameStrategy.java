@@ -3,7 +3,7 @@ package framework;
 
 public interface GameStrategy {
 
-    void calculerScoreTour();
+    int calculerScoreTour();
     Joueur calculerLeVaiqueur();
 
 }
