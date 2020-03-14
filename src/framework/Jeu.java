@@ -15,7 +15,7 @@ public abstract class Jeu implements GameStrategy{
     CollectionDes tabNbDes;
 
     public abstract void calculerScoreTour(Joueur j, int tourCourant);
-    public abstract Joueur calculerLeVaiqueur();
+    public abstract String calculerLeVaiqueur(int nbT);
 
     public final void commencerJeu(){
 
@@ -23,12 +23,12 @@ public abstract class Jeu implements GameStrategy{
         setNbFaceDe();
 
         while(nbToursFait != nbTours){
-            //resetJoueurIterator();
+            resetJoueurIterator();
             while(joueurIterator.hasNext()){
                 Joueur joueurCourant = joueurIterator.next();
                 calculerScoreTour(joueurCourant, nbToursFait);
             }
-            //calculerLeVaiqueur();
+            System.out.println(calculerLeVaiqueur(nbToursFait));
             nbToursFait++;
         }
     }

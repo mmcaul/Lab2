@@ -3,6 +3,7 @@ package jeuBunco;
 import framework.Jeu;
 import framework.*;
 import framework.Joueur;
+import org.w3c.dom.ls.LSOutput;
 
 public class BuncoStrategy extends Jeu {
 
@@ -13,7 +14,7 @@ public class BuncoStrategy extends Jeu {
     @Override
     public void calculerScoreTour(Joueur joueurCourant, int tourCourant) {
 
-        int scoreTourBunco = 0, scoreTour = 0, scoreTourTotal = 0;
+        int scoreTourBunco, scoreTour, scoreTourTotal = 0;
         int scoreDe;
         De currentDe;
         De previousDe = null;
@@ -69,10 +70,28 @@ public class BuncoStrategy extends Jeu {
     }
 
     @Override
-    public Joueur calculerLeVaiqueur() {
-        Joueur winner = new Joueur(1); //NOT OFFICIAL, need to implement strategy
+    public String calculerLeVaiqueur(int tourNb) {
 
-        return winner;
+        Joueur currentJoueur;
+        Joueur previousJoueur = null;
+        Joueur winner = null;
+
+        resetJoueurIterator();
+        while(joueurIterator.hasNext()){
+            currentJoueur = joueurIterator.next();
+            if(previousJoueur != null){
+                if(previousJoueur.getScore() < currentJoueur.getScore()){
+                    winner = currentJoueur;
+                }
+            }
+            previousJoueur = currentJoueur;
+        }
+
+        if(winner != null){
+            return winner.toString(tourNb);
+        } else {
+            return "Il n'y a pas de vainqueur pour ce tour # " + tourNb + "! :(";
+        }
     }
 
 }

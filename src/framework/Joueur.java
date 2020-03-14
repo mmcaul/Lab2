@@ -32,4 +32,8 @@ public class Joueur implements Comparable {
             return 0;
         }
     }
+
+    public String toString(int nbTour){
+        return ("Le winner est le joueur numero: " + getNumJoueur() + " pour le tour # " + nbTour);
+    }
 }
