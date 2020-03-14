@@ -8,6 +8,10 @@ public class Joueur implements Comparable {
         this.numJoueur = numJoueur;
     }
 
+    public int getNumJoueur(){
+        return this.numJoueur;
+    }
+
     public void setScore(int score){
         this.score = score;
     }

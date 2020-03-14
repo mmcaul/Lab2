@@ -23,7 +23,7 @@ public class BuncoStrategy extends Jeu {
         De currentDe;
         De previousDe = null;
 
-        while(scoreDe == tourCourant) {
+        //while(scoreDe == tourCourant) {
             while(deIterator.hasNext()){
                 scoreTour = 0;
                 scoreTourBunco = 0;
@@ -55,7 +55,7 @@ public class BuncoStrategy extends Jeu {
                 }
                 joueurCourant.setScore(scoreTourTotal);
             }
-        }
+        //}
 
 
     }

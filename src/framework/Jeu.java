@@ -19,27 +19,15 @@ public abstract class Jeu implements GameStrategy{
     public abstract void calculerScoreTour(Joueur j, int tourCourant);
     public abstract Joueur calculerLeVaiqueur();
 
-    /*public Jeu(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
-               int numTours, GameStrategy strategieJeu) {
-        deIterator = collectionDes.createIterator();
-        joueurIterator = collectionJoueur.createIterator();
-        this.numTours = numTours;
-        this.strategieJeu = strategieJeu;
-    }
-     */
-
     public final void commencerJeu(){
 
         setNbJoueurs();
         setNbFaceDe();
 
         while(nbToursFait != nbTours){
-            Joueur joueurCourant = joueurIterator.current();
+            Joueur joueurCourant = joueurIterator.next();
+            calculerScoreTour(joueurCourant, nbToursFait);
 
-            for(int i=0;i<nbJoueurs; i++){
-                calculerScoreTour(joueurCourant, nbToursFait);
-                joueurCourant = joueurIterator.next();
-            }
             //calculerLeVaiqueur();
             nbToursFait++;
         }
