@@ -20,10 +20,6 @@ public class JoueurIterator implements Iterator {
         }
     }
 
-    public int size() {
-        return joueurs.length;
-    }
-
     @Override
     public Joueur next() {
         Joueur joueur = joueurs[position];

@@ -7,8 +7,6 @@ public abstract class Jeu implements GameStrategy{
 
     protected DeIterator deIterator;
     protected JoueurIterator joueurIterator;
-    protected GameStrategy strategieJeu;
-    protected int numTours;
 
     Scanner sc = new Scanner(System.in);
     int nbToursFait = 1;
@@ -25,9 +23,11 @@ public abstract class Jeu implements GameStrategy{
         setNbFaceDe();
 
         while(nbToursFait != nbTours){
-            Joueur joueurCourant = joueurIterator.next();
-            calculerScoreTour(joueurCourant, nbToursFait);
-
+            //resetJoueurIterator();
+            while(joueurIterator.hasNext()){
+                Joueur joueurCourant = joueurIterator.next();
+                calculerScoreTour(joueurCourant, nbToursFait);
+            }
             //calculerLeVaiqueur();
             nbToursFait++;
         }
@@ -71,11 +71,11 @@ public abstract class Jeu implements GameStrategy{
         }
     }
 
-   /* public void setNbTours(){
-        System.out.println("Combien de tours voulez-vous jouer?");
-        System.out.print(">>");
-        if(sc.hasNextInt()){
-            nbTours = sc.nextInt();
-        }
-    }*/
+   public void resetDeIterator(){
+        deIterator = tabNbDes.createIterator();
+   }
+
+   public void resetJoueurIterator(){
+        joueurIterator = tabNbJoueurs.createIterator();
+   }
 }

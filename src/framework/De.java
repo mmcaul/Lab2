@@ -1,7 +1,5 @@
 package framework;
 
-
-import java.sql.SQLOutput;
 import java.util.Random;
 
 public class De implements Comparable {
@@ -23,7 +21,7 @@ public class De implements Comparable {
     }
 
     public void rollDe(){
-        currentFace = rand.nextInt(maxFaces);
+        currentFace = rand.nextInt(maxFaces)+1;
     }
 
     @Override

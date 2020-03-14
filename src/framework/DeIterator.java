@@ -20,14 +20,6 @@ public class DeIterator implements Iterator {
         }
     }
 
-    public int size(){
-        return des.length;
-    }
-
-    public De get(){
-        return des[position];
-    }
-
     @Override
     public De next() {
         De de = des[position];
