@@ -21,10 +21,14 @@ public class BuncoStrategy extends Jeu {
         //Pendant que le score du joueur n'est pas zero
         do {
             resetDeIterator(); //Recommence l'itérateur
-            currentDe = deIterator.next(); //Prend le prochain dé
+            scoreTour = 0;
+            scoreTourBunco = 0;
 
             //Pendant que l'itérateur à encore des dés
             while(deIterator.hasNext()) {
+
+                currentDe = deIterator.next(); //Prend le prochain dé
+
                 currentDe.rollDe(); //Roule le dé
                 scoreDe = currentDe.getCurrentFace(); //Récupère la face du dé
 
@@ -39,21 +43,20 @@ public class BuncoStrategy extends Jeu {
                     }
                 }
                 previousDe = currentDe;
-                currentDe = deIterator.next(); //Va au prochain dé dans l'itération
             }
 
             //Si nous avons trois dés parielle au bon tour = Bunco
             if (scoreTourBunco == DE_PAR_TOUR) {
-                scoreTourTotal = BUNCO;
+                scoreTourTotal += BUNCO;
             }
             //Si nous avons trois dés parielle mais pas au bon tour = 5 points
             else if (scoreTour == DE_PAR_TOUR-1) {
-                scoreTourTotal = 5;
+                scoreTourTotal += 5;
             }
             //Si nous avons aucune face du même tour = 0 points
             else if (scoreTourBunco == 0) {
                 joueurCourant.setScore(0);
-                scoreTourTotal = 0;
+                scoreTourTotal += 0;
             }
             //Si nous avons un certain nombres de dés pareille du bon tour
             else {
@@ -62,7 +65,7 @@ public class BuncoStrategy extends Jeu {
 
             joueurCourant.setScore(scoreTourTotal);
 
-        }while(scoreTourTotal != 0);
+        }while(scoreTourBunco != 0);
     }
 
     @Override

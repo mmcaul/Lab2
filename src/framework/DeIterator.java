@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class DeIterator implements Iterator {
 
     De[] des;
-    int position = 0;
+    int positionDe = 0;
 
     public DeIterator(De[] des){
         this.des = des;
@@ -13,7 +13,7 @@ public class DeIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        if(position >= des.length || des[position] == null){
+        if(positionDe >= des.length || des[positionDe] == null){
             return false;
         } else {
             return true;
@@ -22,8 +22,8 @@ public class DeIterator implements Iterator {
 
     @Override
     public De next() {
-        De de = des[position];
-        position = position + 1;
+        De de = des[positionDe];
+        positionDe = positionDe + 1;
         return de;
     }
 }

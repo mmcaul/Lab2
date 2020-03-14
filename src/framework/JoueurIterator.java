@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class JoueurIterator implements Iterator {
 
     Joueur[] joueurs;
-    int position = 0;
+    int positionJoueur = 0;
 
     public JoueurIterator(Joueur[] joueurs){
         this.joueurs = joueurs;
@@ -13,7 +13,7 @@ public class JoueurIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        if(position >= (joueurs.length)-1 || joueurs[position] == null){
+        if(positionJoueur >= (joueurs.length)-1 || joueurs[positionJoueur] == null){
             return false;
         } else {
             return true;
@@ -22,8 +22,8 @@ public class JoueurIterator implements Iterator {
 
     @Override
     public Joueur next() {
-        Joueur joueur = joueurs[position];
-        position = position + 1;
+        Joueur joueur = joueurs[positionJoueur];
+        positionJoueur = positionJoueur + 1;
         return joueur;
     }
 }
