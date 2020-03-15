@@ -1,14 +1,22 @@
 package tests.De;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+import framework.De;
 import org.junit.jupiter.api.Test;
 
 class rollDeTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+
+		De de1 = new De(6);
+		de1.setCurrentFace(4);
+		int firstRoll = de1.getCurrentFace();
+		de1.rollDe();
+		int secondRoll = de1.getCurrentFace();
+		assertNotEquals(firstRoll,secondRoll);
 	}
 
 }

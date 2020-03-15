@@ -12,6 +12,8 @@ class compareToTest {
 	void inferiorTest() {
 		De de1 = new De(4);
 		De de2 = new De(5);
+		de1.setCurrentFace(4);
+		de2.setCurrentFace(5);
 		int output = de1.compareTo(de2);
 		assertEquals(1, output);
 	}
@@ -20,6 +22,8 @@ class compareToTest {
 	void superiorTest() {
 		De de1 = new De(4);
 		De de2 = new De(5);
+		de1.setCurrentFace(4);
+		de2.setCurrentFace(5);
 		int output = de2.compareTo(de1);
 		assertEquals(-1, output);
 	}
