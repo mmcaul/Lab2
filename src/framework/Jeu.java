@@ -7,6 +7,7 @@ public abstract class Jeu implements GameStrategy{
 
     protected DeIterator deIterator;
     protected JoueurIterator joueurIterator;
+    JoueurIterator joueurItTrier;
 
     Scanner sc = new Scanner(System.in);
     int nbToursFait = 1;
@@ -31,16 +32,14 @@ public abstract class Jeu implements GameStrategy{
                 Joueur joueurCourant = joueurIterator.next();
                 calculerScoreTour(joueurCourant, nbToursFait);
             }
-            JoueurIterator joueurItTrier = calculerLeVainqueur(nbToursFait).createIterator();
+            joueurItTrier = calculerLeVainqueur(nbToursFait).createIterator();
+            System.out.println("Voici les standings du tour #" + nbToursFait + " :");
 
-            winner = joueurItTrier.next();
-
-            if(winner.getScore() != 0){
-                System.out.println(winner.toString(nbToursFait));
-            } else {
-                System.out.println("Il n'y a pas de vainqueur pour ce tour # " + nbToursFait + "! :(");
+            for(int t=0; t<joueurItTrier.getTabJoueurs().length; t++){
+                System.out.println(joueurItTrier.next().toString());
             }
 
+            System.out.println();
             nbToursFait++;
         }
     }

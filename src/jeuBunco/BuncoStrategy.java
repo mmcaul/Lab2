@@ -71,31 +71,6 @@ public class BuncoStrategy extends Jeu {
         }while(scoreTourBunco != 0);
     }
 
-    /*@Override
-    public String calculerLeVaiqueur(int tourNb) {
-
-        Joueur currentJoueur;
-        Joueur previousJoueur = null;
-        Joueur winner = null;
-
-        resetJoueurIterator();
-        while(joueurIterator.hasNext()){
-            currentJoueur = joueurIterator.next();
-            if(previousJoueur != null){
-                if(previousJoueur.getScore() < currentJoueur.getScore()){
-                    winner = currentJoueur;
-                }
-            }
-            previousJoueur = currentJoueur;
-        }
-
-        if(winner != null){
-            return winner.toString(tourNb);
-        } else {
-            return "Il n'y a pas de vainqueur pour ce tour # " + tourNb + "! :(";
-        }
-    }*/
-
     public CollectionJoueur calculerLeVainqueur(int tourNb){
 
         resetJoueurIterator();
