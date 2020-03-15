@@ -5,6 +5,8 @@ import framework.*;
 import framework.Joueur;
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.LinkedHashMap;
+
 public class BuncoStrategy extends Jeu {
 
     private static final int MAX_TOURS = 6;
@@ -69,7 +71,7 @@ public class BuncoStrategy extends Jeu {
         }while(scoreTourBunco != 0);
     }
 
-    @Override
+    /*@Override
     public String calculerLeVaiqueur(int tourNb) {
 
         Joueur currentJoueur;
@@ -92,6 +94,30 @@ public class BuncoStrategy extends Jeu {
         } else {
             return "Il n'y a pas de vainqueur pour ce tour # " + tourNb + "! :(";
         }
+    }*/
+
+    public CollectionJoueur calculerLeVainqueur(int tourNb){
+
+        resetJoueurIterator();
+        Joueur[] joueursTrier = joueurIterator.getTabJoueurs();
+        CollectionJoueur colJoueurTrier = new CollectionJoueur(joueursTrier.length);
+
+        for(int i=0; i < joueursTrier.length-1; i++) {
+            int min = i;
+            for (int j = i+1; j < joueursTrier.length; j++){
+                if (joueursTrier[j].getScore() > joueursTrier[min].getScore())
+                    min = j;
+            }
+            Joueur joueurTemp = joueursTrier[min];
+            joueursTrier[min] = joueursTrier[i];
+            joueursTrier[i] = joueurTemp;
+        }
+
+        for(int k=0; k<joueursTrier.length; k++){
+            colJoueurTrier.addJoueur(joueursTrier[k]);
+        }
+
+        return colJoueurTrier;
     }
 
 }

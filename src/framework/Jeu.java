@@ -15,9 +15,12 @@ public abstract class Jeu implements GameStrategy{
     CollectionDes tabNbDes;
 
     public abstract void calculerScoreTour(Joueur j, int tourCourant);
-    public abstract String calculerLeVaiqueur(int nbT);
+    //public abstract String calculerLeVaiqueur(int nbT);
+    public abstract CollectionJoueur calculerLeVainqueur(int nbT);
 
     public final void commencerJeu(){
+
+        Joueur winner = null;
 
         setNbJoueurs();
         setNbFaceDe();
@@ -28,7 +31,16 @@ public abstract class Jeu implements GameStrategy{
                 Joueur joueurCourant = joueurIterator.next();
                 calculerScoreTour(joueurCourant, nbToursFait);
             }
-            System.out.println(calculerLeVaiqueur(nbToursFait));
+            JoueurIterator joueurItTrier = calculerLeVainqueur(nbToursFait).createIterator();
+
+            winner = joueurItTrier.next();
+
+            if(winner.getScore() != 0){
+                System.out.println(winner.toString(nbToursFait));
+            } else {
+                System.out.println("Il n'y a pas de vainqueur pour ce tour # " + nbToursFait + "! :(");
+            }
+
             nbToursFait++;
         }
     }
