@@ -22,7 +22,7 @@ public abstract class Jeu implements GameStrategy{
         setNbJoueurs();
         setNbFaceDe();
 
-        while(nbToursFait != nbTours){
+        while(nbToursFait <= nbTours){
             resetJoueurIterator();
             while(joueurIterator.hasNext()){
                 Joueur joueurCourant = joueurIterator.next();
