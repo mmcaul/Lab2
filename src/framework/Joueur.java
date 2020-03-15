@@ -24,9 +24,9 @@ public class Joueur implements Comparable {
     public int compareTo(Object o) {
         Joueur comparableJoueur = (Joueur) o;
 
-        if(comparableJoueur.getScore() > score){
+        if(comparableJoueur.getNumJoueur() > numJoueur){
             return 1;
-        } else if (comparableJoueur.getScore() < score){
+        } else if (comparableJoueur.getNumJoueur() < numJoueur){
             return -1;
         } else {
             return 0;

@@ -15,23 +15,21 @@ public abstract class Jeu implements GameStrategy{
     CollectionJoueur tabNbJoueurs;
     CollectionDes tabNbDes;
 
-    public abstract void calculerScoreTour(Joueur j, int tourCourant);
-    //public abstract String calculerLeVaiqueur(int nbT);
+    public abstract void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
     public abstract CollectionJoueur calculerLeVainqueur(int nbT);
 
     public final void commencerJeu(){
-
-        Joueur winner = null;
 
         setNbJoueurs();
         setNbFaceDe();
 
         while(nbToursFait <= nbTours){
             resetJoueurIterator();
-            while(joueurIterator.hasNext()){
-                Joueur joueurCourant = joueurIterator.next();
-                calculerScoreTour(joueurCourant, nbToursFait);
-            }
+            //while(joueurIterator.hasNext()){
+                //Joueur joueurCourant = joueurIterator.next();
+                calculerScoreTour(joueurIterator, deIterator, nbToursFait);
+                //calculerScoreTour(joueurCourant, deIterator, nbToursFait);
+            //}
             joueurItTrier = calculerLeVainqueur(nbToursFait).createIterator();
             System.out.println("Voici les standings du tour #" + nbToursFait + " :");
 
@@ -84,6 +82,14 @@ public abstract class Jeu implements GameStrategy{
 
    public void resetDeIterator(){
         deIterator = tabNbDes.createIterator();
+   }
+
+   public void setDeIterator(DeIterator dIt){
+        this.deIterator = dIt;
+   }
+
+   public void setTabNbDes(CollectionDes colD){
+        this.tabNbDes = colD;
    }
 
    public void resetJoueurIterator(){
