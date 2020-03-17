@@ -16,6 +16,6 @@ package framework;
 public interface GameStrategy {
 
     //Méthodes qui serons à implémenter par toutes les classes implémentant GameStrategy
-    void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
-    CollectionJoueur calculerLeVainqueur();
+    public int calculerScoreTour(Joueur j, DeIterator dIt, int tourCourant);
+    public CollectionJoueur calculerLeVainqueur();
 }
