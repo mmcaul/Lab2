@@ -49,6 +49,7 @@ public class BuncoStrategy extends Jeu {
         while (dIt.hasNext()) {
 
             currentDe = dIt.next(); //Prend le prochain dé
+            System.out.println(currentDe.getCurrentFace());
 
             //currentDe.rollDe(); //Roule le dé
             scoreDe = currentDe.getCurrentFace(); //Récupère la face du dé
@@ -81,7 +82,6 @@ public class BuncoStrategy extends Jeu {
         }
 
         return scoreTourTotal;//Retourne le score du joueur pour determiner si nous devons recommencer
-
     }
 
     /**
