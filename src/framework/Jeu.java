@@ -48,29 +48,25 @@ public abstract class Jeu implements GameStrategy{
             //Crée un nouvel iterateur avec le joueur courant
             resetJoueurIterator();
 
-            /*
-            //Calcule le score de chacun des joueurs pour le tour courant
-            calculerScoreTour(joueurIterator, deIterator, nbToursFait);
-             */
-
+            //Pendant qu'il reste des joueurs
             while(joueurIterator.hasNext()){
-                Joueur jCourant = joueurIterator.next();
+                Joueur jCourant = joueurIterator.next(); //Va chercher le joueur courant
 
-                int runningScore = 0;
+                int runningScore = 0; //Variable pour le score courant du joueur
+                //Met la valeur du roule de dès dans la variable
                 valueScore = calculerScoreTour(jCourant, deIterator, nbToursFait);
 
+                //Si la valeur est 0 ou un Bunco(21)
                 if(valueScore == 0 || valueScore == 21){
-                    jCourant.setScore(valueScore);
+                    jCourant.setScore(valueScore); //Le score du joueur est comme suit
                 } else{
-                    while(valueScore!=0){
+                    //Pendant que la valeur n'est pas zéro ou 21
+                    while(valueScore!=21 && valueScore!=0){
                         valueScore = calculerScoreTour(jCourant, deIterator,nbToursFait);
-                        runningScore += valueScore;
+                        runningScore += valueScore; //Incrémente de score du joueur
                     }
-                    jCourant.setScore(runningScore);
+                    jCourant.setScore(runningScore); //Set le score du joueur
                 }
-
-
-
             }
 
 
