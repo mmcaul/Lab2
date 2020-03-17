@@ -51,7 +51,7 @@ public class BuncoStrategy extends Jeu {
             currentDe = dIt.next(); //Prend le prochain dé
             System.out.println(currentDe.getCurrentFace());
 
-            //currentDe.rollDe(); //Roule le dé
+            // currentDe.rollDe(); //Roule le dé
             scoreDe = currentDe.getCurrentFace(); //Récupère la face du dé
 
             // Si la face du dé est le même que le tour courant
