@@ -6,42 +6,91 @@ import framework.Joueur;
 
 public class BuncoStrategy extends Jeu {
 
-    private static final int MAX_TOURS = 6;
     private static final int DE_PAR_TOUR = 3;
     private static final int BUNCO = 21;
 
-    public BuncoStrategy(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
-                         int numTours, GameStrategy strategieJeu){
-        super(collectionDes, collectionJoueur, numTours, strategieJeu);
+    @Override
+    public void calculerScoreTour(JoueurIterator jouIt, DeIterator dIt, int tourCourant) {
+
+        int scoreTourBunco, scoreTour, scoreTourTotal = 0;
+        int scoreDe;
+        De currentDe;
+        De previousDe = null;
+
+        while(jouIt.hasNext()) {
+
+            Joueur joueurCourant = jouIt.next();
+
+            //Pendant que le score du joueur n'est pas zero
+            do {
+                resetDeIterator(); //Recommence l'itérateur
+                scoreTour = 0;
+                scoreTourBunco = 0;
+
+                //Pendant que l'itérateur à encore des dés
+                while (dIt.hasNext()) {
+
+                    currentDe = dIt.next(); //Prend le prochain dé
+
+                    //currentDe.rollDe(); //Roule le dé
+                    scoreDe = currentDe.getCurrentFace(); //Récupère la face du dé
+
+                    // Si la face du dé est le même que le tour courant
+                    if (scoreDe == tourCourant) {
+                        scoreTourBunco++; //Incrémente le score pour calculer un tour donnant un Bunco
+                    }
+                    if (previousDe != null) {
+                        //Si le dé courant et précedent au la même face
+                        if (currentDe.getCurrentFace() == previousDe.getCurrentFace()) {
+                            scoreTour++; //Incrémente un score pour voir si nous avons 3 dés pareille
+                        }
+                    }
+                    previousDe = currentDe;
+                }
+
+                //Si nous avons trois dés parielle au bon tour = Bunco
+                if (scoreTourBunco == DE_PAR_TOUR) {
+                    scoreTourTotal += BUNCO;
+                    joueurCourant.setScore(scoreTourTotal);
+                    break;
+                }
+                //Si nous avons trois dés parielle mais pas au bon tour = 5 points
+                else if (scoreTour == DE_PAR_TOUR - 1) {
+                    scoreTourTotal += 5;
+                }
+                //Si nous avons un certain nombres de dés pareille du bon tour
+                else {
+                    scoreTourTotal += scoreTourBunco;
+                }
+
+                joueurCourant.setScore(scoreTourTotal);
+
+            } while (scoreTourBunco != 0);
+        }
     }
 
-    @Override
-    public int calculerScoreTour() {
-        int scoreTot = 0;
+    public CollectionJoueur calculerLeVainqueur(int tourNb){
 
-        while (deIterator.hasNext()) {
-            int scoreRoll = 0;
+        resetJoueurIterator();
+        Joueur[] joueursTrier = joueurIterator.getTabJoueurs();
+        CollectionJoueur colJoueurTrier = new CollectionJoueur(joueursTrier.length);
 
-            for (int i = 0; i < DE_PAR_TOUR; i++) {
-                if (deIterator.next().getCurrentFace() == numTours) {
-                    scoreRoll++;
-                }
+        for(int i=0; i < joueursTrier.length-1; i++) {
+            int min = i;
+            for (int j = i+1; j < joueursTrier.length; j++){
+                if (joueursTrier[j].getScore() > joueursTrier[min].getScore())
+                    min = j;
             }
-            if (scoreRoll == 3) {
-                scoreTot += BUNCO;
-            } else {
-                scoreTot += scoreRoll;
-            }
+            Joueur joueurTemp = joueursTrier[min];
+            joueursTrier[min] = joueursTrier[i];
+            joueursTrier[i] = joueurTemp;
         }
 
-        return 0;
-    }
+        for(int k=0; k<joueursTrier.length; k++){
+            colJoueurTrier.addJoueur(joueursTrier[k]);
+        }
 
-    @Override
-    public Joueur calculerLeVaiqueur() {
-        Joueur winner = new Joueur(1); //NOT OFFICIAL, need to implement strategy
-
-        return winner;
+        return colJoueurTrier;
     }
 
 }

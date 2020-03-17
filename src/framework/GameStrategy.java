@@ -3,7 +3,6 @@ package framework;
 
 public interface GameStrategy {
 
-    int calculerScoreTour();
-    Joueur calculerLeVaiqueur();
-
+    void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
+    CollectionJoueur calculerLeVainqueur(int nbT);
 }

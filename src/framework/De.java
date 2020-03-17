@@ -1,13 +1,12 @@
 package framework;
 
-
 import java.util.Random;
 
 public class De implements Comparable {
 
     private int currentFace = 0;
     private int maxFaces;
-    Random rand = new Random(maxFaces);
+    Random rand = new Random();
 
     public De(int maxFaces){
         this.maxFaces = maxFaces;
@@ -22,23 +21,23 @@ public class De implements Comparable {
     }
 
     public void rollDe(){
-        currentFace = rand.nextInt();
+        currentFace = rand.nextInt(maxFaces)+1;
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Object o) throws IllegalArgumentException{
         De comparableDe = (De) o;
 
-        try{
-            if(comparableDe.getCurrentFace() > currentFace){
+        if(o == null){
+            throw new IllegalArgumentException();
+        } else {
+            if (comparableDe.getCurrentFace() > currentFace) {
                 return 1;
-            } else if (comparableDe.getCurrentFace() < currentFace){
+            } else if (comparableDe.getCurrentFace() < currentFace) {
                 return -1;
-            } else if (comparableDe.getCurrentFace() == currentFace){
+            } else if (comparableDe.getCurrentFace() == currentFace) {
                 return 0;
             }
-        } catch (IllegalArgumentException e){
-            System.out.println("Invalid entry!");
         }
         return -99;
     }

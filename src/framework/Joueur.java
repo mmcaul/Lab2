@@ -8,6 +8,10 @@ public class Joueur implements Comparable {
         this.numJoueur = numJoueur;
     }
 
+    public int getNumJoueur(){
+        return this.numJoueur;
+    }
+
     public void setScore(int score){
         this.score = score;
     }
@@ -20,12 +24,16 @@ public class Joueur implements Comparable {
     public int compareTo(Object o) {
         Joueur comparableJoueur = (Joueur) o;
 
-        if(comparableJoueur.getScore() > score){
+        if(comparableJoueur.getNumJoueur() > numJoueur){
             return 1;
-        } else if (comparableJoueur.getScore() < score){
+        } else if (comparableJoueur.getNumJoueur() < numJoueur){
             return -1;
         } else {
             return 0;
         }
+    }
+
+    public String toString(){
+        return ("Joueur numero: " + getNumJoueur() + " = Score: " + getScore());
     }
 }

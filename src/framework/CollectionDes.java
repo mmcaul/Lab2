@@ -2,7 +2,7 @@ package framework;
 
 public class CollectionDes {
 
-    int numOfDes = 0;
+    int numOfDes, position = 0;
     De[] tabDes;
 
     public CollectionDes(int nbDes){
@@ -11,9 +11,8 @@ public class CollectionDes {
     }
 
     public void addDe(De de){
-        for(int i=0; i<numOfDes; i++){
-            tabDes[i] = de;
-        }
+        tabDes[position] = de;
+        position++;
     }
 
     public DeIterator createIterator(){

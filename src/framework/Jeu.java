@@ -7,39 +7,37 @@ public abstract class Jeu implements GameStrategy{
 
     protected DeIterator deIterator;
     protected JoueurIterator joueurIterator;
-    protected GameStrategy strategieJeu;
-    protected int numTours;
+    JoueurIterator joueurItTrier;
 
     Scanner sc = new Scanner(System.in);
-    int nbToursFait = 0;
+    int nbToursFait = 1;
     int nbJoueurs, nbDes, nbFaceDe, nbTours;
     CollectionJoueur tabNbJoueurs;
     CollectionDes tabNbDes;
-    DeIterator desIterator;
 
-    public abstract int calculerScoreTour();
-    public abstract Joueur calculerLeVaiqueur();
-
-    public Jeu(CollectionDes collectionDes, CollectionJoueur collectionJoueur,
-               int numTours, GameStrategy strategieJeu) {
-        deIterator = collectionDes.createIterator();
-        joueurIterator = collectionJoueur.createIterator();
-        this.numTours = numTours;
-        this.strategieJeu = strategieJeu;
-    }
+    public abstract void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
+    public abstract CollectionJoueur calculerLeVainqueur(int nbT);
 
     public final void commencerJeu(){
 
         setNbJoueurs();
         setNbFaceDe();
-        setNbTours();
 
-        while(nbToursFait != nbTours){
+        while(nbToursFait <= nbTours){
+            resetJoueurIterator();
+            //while(joueurIterator.hasNext()){
+                //Joueur joueurCourant = joueurIterator.next();
+                calculerScoreTour(joueurIterator, deIterator, nbToursFait);
+                //calculerScoreTour(joueurCourant, deIterator, nbToursFait);
+            //}
+            joueurItTrier = calculerLeVainqueur(nbToursFait).createIterator();
+            System.out.println("Voici les standings du tour #" + nbToursFait + " :");
 
-            for(int i=0;i<nbJoueurs; i++){
-                calculerScoreTour();
+            for(int t=0; t<joueurItTrier.getTabJoueurs().length; t++){
+                System.out.println(joueurItTrier.next().toString());
             }
-            calculerLeVaiqueur();
+
+            System.out.println();
             nbToursFait++;
         }
     }
@@ -72,20 +70,29 @@ public abstract class Jeu implements GameStrategy{
 
             if(sc.hasNextInt()){
                 nbFaceDe = sc.nextInt();
+                nbTours = nbFaceDe;
             }
 
             for(int i=0; i<nbDes; i++){
                 tabNbDes.addDe(new De(nbFaceDe));
             }
-            desIterator = tabNbDes.createIterator();
+            deIterator = tabNbDes.createIterator();
         }
     }
 
-    public void setNbTours(){
-        System.out.println("Combien de tours voulez-vous jouer?");
-        System.out.print(">>");
-        if(sc.hasNextInt()){
-            nbTours = sc.nextInt();
-        }
-    }
+   public void resetDeIterator(){
+        deIterator = tabNbDes.createIterator();
+   }
+
+   public void setDeIterator(DeIterator dIt){
+        this.deIterator = dIt;
+   }
+
+   public void setTabNbDes(CollectionDes colD){
+        this.tabNbDes = colD;
+   }
+
+   public void resetJoueurIterator(){
+        joueurIterator = tabNbJoueurs.createIterator();
+   }
 }
