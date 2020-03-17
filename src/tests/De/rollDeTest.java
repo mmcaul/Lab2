@@ -6,11 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import framework.De;
 import org.junit.jupiter.api.Test;
 
-class rollDeTest {
+public class rollDeTest {
 
 	@Test
 	void test() {
-
+		
 		De de1 = new De(6);
 		de1.setCurrentFace(4);
 		int firstRoll = de1.getCurrentFace();

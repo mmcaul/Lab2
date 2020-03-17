@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import framework.De;
 
-class compareToTest {
+public class compareToTest {
 
 	@Test
 	void inferiorTest() {
