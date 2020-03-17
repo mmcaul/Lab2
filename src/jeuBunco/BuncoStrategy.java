@@ -9,10 +9,10 @@ import framework.Joueur;
  Session: H2020
  Groupe: 04
  Projet: Laboratoire #2
- Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+ ï¿½tudiant(e)s: Mï¿½lissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
  Professeur : Benoit Galarneau
  Nom du fichier: BuncoStrategy.java
- Date créé: 2020-02-25
+ Date crï¿½ï¿½: 2020-02-25
  Date dern. modif. 2020-03-17
  *******************************************************/
 
@@ -24,7 +24,7 @@ public class BuncoStrategy extends Jeu {
 
 
     /**
-     * Méthode qui calcule le score de chaque joueur pour chacun des tour de jeu
+     * Mï¿½thode qui calcule le score de chaque joueur pour chacun des tour de jeu
      * @param joueurCourant : Joueur
      * @param dIt : DeIterator
      * @param tourCourant : int
@@ -33,53 +33,48 @@ public class BuncoStrategy extends Jeu {
     @Override
     public int calculerScoreTour(Joueur joueurCourant, DeIterator dIt, int tourCourant) {
 
-        //Variable de méthodes
+        //Variable de mï¿½thodes
         int scoreTourBunco, scoreTour, scoreTourTotal = 0;
         int scoreDe;
         De currentDe;
         De previousDe = null;
 
-        resetDeIterator(); //Recommence l'itérateur
-        dIt = getDeIterator(); //Va chercher le nouvel itérateur
+        resetDeIterator(); //Recommence l'itï¿½rateur
+        dIt = getDeIterator(); //Va chercher le nouvel itï¿½rateur
         scoreTour = 0;
         scoreTourBunco = 0;
 
-        //Pendant que l'itérateur à encore des dés
+        //Pendant que l'itï¿½rateur ï¿½ encore des dï¿½s
         while (dIt.hasNext()) {
 
-            currentDe = dIt.next(); //Prend le prochain dé
+            currentDe = dIt.next(); //Prend le prochain dï¿½
 
-<<<<<<< HEAD
-            //currentDe.rollDe(); //Roule le dÃ©
-            scoreDe = currentDe.getCurrentFace(); //RÃ©cupÃ¨re la face du dÃ©
-=======
-            currentDe.rollDe(); //Roule le dé
-            scoreDe = currentDe.getCurrentFace(); //Récupère la face du dé
->>>>>>> 3564cd8eb0055a14c71e3a022c22dbe014f94e95
+            //currentDe.rollDe(); //Roule le dï¿½
+            scoreDe = currentDe.getCurrentFace(); //Rï¿½cupï¿½re la face du dï¿½
 
-            // Si la face du dé est le même que le tour courant
+            // Si la face du dï¿½ est le mï¿½me que le tour courant
             if (scoreDe == tourCourant) {
-                scoreTourBunco++; //Incrémente le score pour calculer un tour donnant un Bunco
+                scoreTourBunco++; //Incrï¿½mente le score pour calculer un tour donnant un Bunco
             }
             if (previousDe != null) {
-                //Si le dé courant et précedent au la même face
+                //Si le dï¿½ courant et prï¿½cedent au la mï¿½me face
                 if (currentDe.getCurrentFace() == previousDe.getCurrentFace()) {
-                    scoreTour++; //Incrémente un score pour voir si nous avons 3 dés pareille
+                    scoreTour++; //Incrï¿½mente un score pour voir si nous avons 3 dï¿½s pareille
                 }
             }
             previousDe = currentDe;
         }
 
-        //Si nous avons trois dés parielle au bon tour = Bunco
+        //Si nous avons trois dï¿½s parielle au bon tour = Bunco
         if (scoreTourBunco == DE_PAR_TOUR) {
             scoreTourTotal += BUNCO;
             joueurCourant.setScore(scoreTourTotal);
         }
-        //Si nous avons trois dés parielle mais pas au bon tour = 5 points
+        //Si nous avons trois dï¿½s parielle mais pas au bon tour = 5 points
         else if (scoreTour == DE_PAR_TOUR - 1) {
             scoreTourTotal += 5;
         }
-        //Si nous avons un certain nombres de dés pareille du bon tour
+        //Si nous avons un certain nombres de dï¿½s pareille du bon tour
         else {
             scoreTourTotal += scoreTourBunco;
         }
@@ -89,7 +84,7 @@ public class BuncoStrategy extends Jeu {
     }
 
     /**
-     * Méthode qui retourne un collection de joueurs trier du meilleur au pire score
+     * Mï¿½thode qui retourne un collection de joueurs trier du meilleur au pire score
      * @return : CollectionJoueur
      */
     public CollectionJoueur calculerLeVainqueur(){
