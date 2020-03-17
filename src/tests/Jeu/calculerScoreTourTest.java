@@ -127,7 +127,7 @@ public class calculerScoreTourTest {
 
         newGame.calculerScoreTour(jIt, deIt,4);
 
-        //assertEquals(1, j1.getScore());
+        assertEquals(1, j1.getScore());
         //NEED TO FIND A WAY TO PROVE SAME PLAYER!!!!
     }
 
