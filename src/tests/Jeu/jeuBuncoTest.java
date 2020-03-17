@@ -58,7 +58,6 @@ public class jeuBuncoTest {
          * a la methode rollDe() dans calculerScoreTour de la class BuncoStrategy
          * pour assurer que nous avons la bonne face pour un Bunco
          */
-    
 
         Jeu newGame = new BuncoStrategy();
 
@@ -86,6 +85,13 @@ public class jeuBuncoTest {
         newGame.setTabNbDes(colDe);
         newGame.setDeIterator(deIt);
 
+        Joueur jCourant = jIt.next();
+
+        int score = newGame.calculerScoreTour(jCourant, deIt,2);
+
+        jCourant.setScore(score);
+
+        assertEquals(5, jCourant.getScore());
         int res = newGame.calculerScoreTour(jIt.next(), deIt,2);
 
         assertEquals(5, res);
@@ -167,8 +173,6 @@ public class jeuBuncoTest {
         colJ.addJoueur(j1);
         colJ.addJoueur(j2);
 
-        JoueurIterator jIt = colJ.createIterator();
-
         De de1 = new De(4);
         de1.setCurrentFace(1);
         De de2 = new De(4);
@@ -192,6 +196,23 @@ public class jeuBuncoTest {
 
     @Test
     void calculerVainqueurTest(){
-    	
+
+        /*Jeu newGame = new BuncoStrategy();
+
+        Joueur[] joueursJeu = new Joueur[2];
+
+        joueursJeu[0] = new Joueur(1);
+        joueursJeu[1] = new Joueur(2);
+
+        joueursJeu[0].setScore(0);
+        joueursJeu[1].setScore(21);
+
+        CollectionJoueur tabJoueur = new CollectionJoueur(2);
+        tabJoueur.addJoueur(joueursJeu[0]);
+        tabJoueur.addJoueur(joueursJeu[1]);
+
+        CollectionJoueur tabTrier = newGame.calculerLeVainqueur();
+
+        System.out.println(tabTrier.toString());*/
     }
 }
