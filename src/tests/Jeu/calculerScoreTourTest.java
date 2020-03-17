@@ -15,7 +15,7 @@ public class calculerScoreTourTest {
         /**
          * Ce test fonctionne mais nous devons mettre en commentaire l'appel
          * a la methode rollDe() dans calculerScoreTour de la class BuncoStrategy
-         * pour assurer que nvons la bonne face pour un Bunco
+         * pour assurer que nous avons la bonne face pour un Bunco
          */
     	
         Jeu newGame = new BuncoStrategy();
