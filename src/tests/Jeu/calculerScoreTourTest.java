@@ -17,7 +17,7 @@ public class calculerScoreTourTest {
          * a la methode rollDe() dans calculerScoreTour de la class BuncoStrategy
          * pour assurer que nous avons la bonne face pour un Bunco
          */
-
+    	
         Jeu newGame = new BuncoStrategy();
 
         CollectionDes colDe = new CollectionDes(3);

@@ -1,19 +1,26 @@
 package tests.De;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import framework.De;
 
-class setCurrentFaceTest {
+public class setCurrentFaceTest {
 
+	private De de1 = new De(4);
+	
 	@Test
-	void test1() {
-		De de1 = new De(4);
+	public void test() {
 		de1.setCurrentFace(1);
 		int output = de1.getCurrentFace();
 		assertEquals(1, output);
 	}
+	
+    @Test(expected=IllegalArgumentException.class)
+    public void deNullTest(){
+        de1.setCurrentFace(4);
+        de1.compareTo(null);
+    }
 
 }

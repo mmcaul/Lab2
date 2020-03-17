@@ -6,6 +6,7 @@ public class Joueur implements Comparable {
 
     public Joueur(int numJoueur){
         this.numJoueur = numJoueur;
+        this.score = 0;
     }
 
     public int getNumJoueur(){
@@ -32,7 +33,7 @@ public class Joueur implements Comparable {
             return 0;
         }
     }
-
+    
     public String toString(){
         return ("Joueur numero: " + getNumJoueur() + " = Score: " + getScore());
     }

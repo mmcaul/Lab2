@@ -4,7 +4,7 @@ package framework;
 import java.util.Scanner;
 
 public abstract class Jeu implements GameStrategy{
-
+	
     protected DeIterator deIterator;
     protected JoueurIterator joueurIterator;
     JoueurIterator joueurItTrier;
