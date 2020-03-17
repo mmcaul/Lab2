@@ -173,8 +173,7 @@ public class calculerScoreTourTest {
     }
 
     @Test
-    void ClassementFinal(){
-
-
+    void calculerVainqueurTest(){
+    	
     }
 }

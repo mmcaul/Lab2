@@ -34,8 +34,12 @@ public class De implements Comparable {
      * Méthode pour set la face de dé en cours
      * @param currentFace : int
      */
-    public void setCurrentFace(int currentFace){
-        this.currentFace = currentFace;
+    public void setCurrentFace(int currentFace) throws IllegalArgumentException{
+        if (currentFace >= 1 && currentFace <= 6) {
+        	this.currentFace = currentFace;
+        } else {
+        	throw new IllegalArgumentException();
+        }
     }
 
     /**

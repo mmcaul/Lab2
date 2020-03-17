@@ -1,4 +1,4 @@
-package tests;
+package tests.Joueur;
 
 import framework.Joueur;
 import org.junit.Before;
@@ -16,6 +16,9 @@ public class JoueurTest {
 		joueur2 = new Joueur(1);
 	}
 	
+	/*
+	 * 
+	 */
 	@Test
 	public void numJoueur1Test() {
 		int numero = joueur1.getNumJoueur();
