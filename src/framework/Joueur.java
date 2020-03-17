@@ -15,24 +15,46 @@ package framework;
 
 public class Joueur implements Comparable {
 
+    //Variable de classe
     private int numJoueur, score;
 
+    /**
+     * Constructeur par paramètre
+     * @param numJoueur : int
+     */
     public Joueur(int numJoueur){
         this.numJoueur = numJoueur;
     }
 
+    /**
+     * Getter qui retourne le numéro du joueur
+     * @return : int
+     */
     public int getNumJoueur(){
         return this.numJoueur;
     }
 
+    /**
+     * Setter pour le score du joueur
+     * @param score : int
+     */
     public void setScore(int score){
         this.score = score;
     }
 
+    /**
+     * Getter qui retourne le score du joueur
+     * @return : int
+     */
     public int getScore(){
         return this.score;
     }
 
+    /**
+     * Méthode qui compare les joueurs basée sur leurs numéro de joueurs
+     * @param o : Object
+     * @return : int
+     */
     @Override
     public int compareTo(Object o) {
         Joueur comparableJoueur = (Joueur) o;
@@ -46,6 +68,10 @@ public class Joueur implements Comparable {
         }
     }
 
+    /**
+     * Méthode qui retourne un String contenant le numéro du joueur et son score
+     * @return : String
+     */
     public String toString(){
         return ("Joueur numero: " + getNumJoueur() + " = Score: " + getScore());
     }

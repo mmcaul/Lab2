@@ -19,9 +19,16 @@ import framework.Joueur;
 
 public class BuncoStrategy extends Jeu {
 
+    //Variable de classe
     private static final int DE_PAR_TOUR = 3;
     private static final int BUNCO = 21;
 
+    /**
+     * Méthode qui calcule le score de chaque joueur pour chacun des tour de jeu
+     * @param jouIt : JoueurIterator
+     * @param dIt : DeIterator
+     * @param tourCourant : int
+     */
     @Override
     public void calculerScoreTour(JoueurIterator jouIt, DeIterator dIt, int tourCourant) {
 
@@ -46,7 +53,7 @@ public class BuncoStrategy extends Jeu {
 
                     currentDe = dIt.next(); //Prend le prochain dé
 
-                    currentDe.rollDe(); //Roule le dé
+                    //currentDe.rollDe(); //Roule le dé
                     scoreDe = currentDe.getCurrentFace(); //Récupère la face du dé
 
                     // Si la face du dé est le même que le tour courant
@@ -83,6 +90,10 @@ public class BuncoStrategy extends Jeu {
         }
     }
 
+    /**
+     * Méthode qui retourne un collection de joueurs trier du meilleur au pire score
+     * @return : CollectionJoueur
+     */
     public CollectionJoueur calculerLeVainqueur(){
 
         resetJoueurIterator();
