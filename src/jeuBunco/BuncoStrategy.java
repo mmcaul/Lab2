@@ -37,6 +37,7 @@ public class BuncoStrategy extends Jeu {
             //Pendant que le score du joueur n'est pas zero
             do {
                 resetDeIterator(); //Recommence l'itérateur
+                dIt = getDeIterator();
                 scoreTour = 0;
                 scoreTourBunco = 0;
 
@@ -106,8 +107,5 @@ public class BuncoStrategy extends Jeu {
         return colJoueurTrier;
     }
 
-    public void resetDeIterator(){
-        deIterator = tabNbDes.createIterator();
-    }
 
 }

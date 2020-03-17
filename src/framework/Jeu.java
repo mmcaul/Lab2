@@ -47,6 +47,8 @@ public abstract class Jeu implements GameStrategy{
             //Crée un nouvel iterateur avec les joueurs courant
             resetJoueurIterator();
 
+            calculerScoreTour(joueurIterator, deIterator, nbToursFait);
+
             joueurItTrier = calculerLeVainqueur().createIterator();
             System.out.println("Voici les standings du tour #" + nbToursFait + " :");
 

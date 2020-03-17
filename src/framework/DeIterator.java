@@ -52,4 +52,8 @@ public class DeIterator implements Iterator {
         positionDe = positionDe + 1;
         return de;
     }
+
+    public De[] getDes(){
+        return this.des;
+    }
 }
