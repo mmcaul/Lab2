@@ -2,6 +2,7 @@ package framework;
 
 public class CollectionDes {
 
+    //Initialisation des variables de classes
     int numOfDes, position = 0;
     De[] tabDes;
 

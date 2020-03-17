@@ -16,7 +16,7 @@ public abstract class Jeu implements GameStrategy{
     CollectionDes tabNbDes;
 
     public abstract void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
-    public abstract CollectionJoueur calculerLeVainqueur(int nbT);
+    public abstract CollectionJoueur calculerLeVainqueur();
 
     public final void commencerJeu(){
 
@@ -30,7 +30,7 @@ public abstract class Jeu implements GameStrategy{
                 calculerScoreTour(joueurIterator, deIterator, nbToursFait);
                 //calculerScoreTour(joueurCourant, deIterator, nbToursFait);
             //}
-            joueurItTrier = calculerLeVainqueur(nbToursFait).createIterator();
+            joueurItTrier = calculerLeVainqueur().createIterator();
             System.out.println("Voici les standings du tour #" + nbToursFait + " :");
 
             for(int t=0; t<joueurItTrier.getTabJoueurs().length; t++){

@@ -69,7 +69,7 @@ public class BuncoStrategy extends Jeu {
         }
     }
 
-    public CollectionJoueur calculerLeVainqueur(int tourNb){
+    public CollectionJoueur calculerLeVainqueur(){
 
         resetJoueurIterator();
         Joueur[] joueursTrier = joueurIterator.getTabJoueurs();
