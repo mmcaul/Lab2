@@ -22,7 +22,7 @@ public class DeTest {
         de2.setCurrentFace(5);
         assertEquals(1, de1.compareTo(de2));
     }
-
+    
     @Test
     public void deInferieurTest(){
         de1.setCurrentFace(4);

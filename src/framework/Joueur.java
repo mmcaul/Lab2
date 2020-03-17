@@ -24,6 +24,7 @@ public class Joueur implements Comparable {
      */
     public Joueur(int numJoueur){
         this.numJoueur = numJoueur;
+        this.score = 0;
     }
 
     /**
@@ -72,6 +73,7 @@ public class Joueur implements Comparable {
      * Méthode qui retourne un String contenant le numéro du joueur et son score
      * @return : String
      */
+
     public String toString(){
         return ("Joueur numero: " + getNumJoueur() + " = Score: " + getScore());
     }

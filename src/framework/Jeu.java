@@ -17,6 +17,7 @@ import java.util.Scanner;
 
 public abstract class Jeu implements GameStrategy{
 
+
     //Variable de classe
     protected DeIterator deIterator;
     protected JoueurIterator joueurIterator;

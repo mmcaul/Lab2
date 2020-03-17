@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import framework.De;
 
-class getCurrentFaceTest {
+public class getCurrentFaceTest {
 
 	@Test
 	void test1() {

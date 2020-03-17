@@ -37,10 +37,12 @@ public class JoueurIterator implements Iterator {
         return joueurs;
     }
 
+
     /**
      * Méthode qui détermine si il y a un prochain joueur présent
      * @return : boolean
      */
+
     @Override
     public boolean hasNext() {
         if(positionJoueur >= (joueurs.length)-1 || joueurs[positionJoueur] == null){

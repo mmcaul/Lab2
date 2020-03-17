@@ -112,5 +112,4 @@ public class BuncoStrategy extends Jeu {
         return colJoueurTrier;
     }
 
-
 }
