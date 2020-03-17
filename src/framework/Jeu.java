@@ -24,13 +24,14 @@ public abstract class Jeu implements GameStrategy{
 
     Scanner sc = new Scanner(System.in);
     int nbToursFait = 1;
-    int nbJoueurs, nbDes, nbFaceDe, nbTours;
+    int nbJoueurs, nbDes, nbFaceDe, nbTours, valueScore;
     protected CollectionJoueur tabNbJoueurs;
     protected CollectionDes tabNbDes;
 
     //Méthodes abstraites puisque les stratégies de jeu ne serons implémenter
     //que par les differents jeu concrète
-    public abstract void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
+    //public abstract void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
+    public abstract int calculerScoreTour(Joueur j, DeIterator dIt, int tourCourant);
     public abstract CollectionJoueur calculerLeVainqueur();
 
     /**
@@ -47,8 +48,31 @@ public abstract class Jeu implements GameStrategy{
             //Crée un nouvel iterateur avec le joueur courant
             resetJoueurIterator();
 
+            /*
             //Calcule le score de chacun des joueurs pour le tour courant
             calculerScoreTour(joueurIterator, deIterator, nbToursFait);
+             */
+
+            while(joueurIterator.hasNext()){
+                Joueur jCourant = joueurIterator.next();
+
+                int runningScore = 0;
+                valueScore = calculerScoreTour(jCourant, deIterator, nbToursFait);
+
+                if(valueScore == 0 || valueScore == 21){
+                    jCourant.setScore(valueScore);
+                } else{
+                    while(valueScore!=0){
+                        valueScore = calculerScoreTour(jCourant, deIterator,nbToursFait);
+                        runningScore += valueScore;
+                    }
+                    jCourant.setScore(runningScore);
+                }
+
+
+
+            }
+
 
             //Retourne une collection de joueurs trier en fonction de leurs scores
             joueurItTrier = calculerLeVainqueur().createIterator();

@@ -23,12 +23,13 @@ public class BuncoStrategy extends Jeu {
     private static final int DE_PAR_TOUR = 3;
     private static final int BUNCO = 21;
 
+    /*
     /**
      * Méthode qui calcule le score de chaque joueur pour chacun des tour de jeu
      * @param jouIt : JoueurIterator
      * @param dIt : DeIterator
      * @param tourCourant : int
-     */
+
     @Override
     public void calculerScoreTour(JoueurIterator jouIt, DeIterator dIt, int tourCourant) {
 
@@ -88,6 +89,72 @@ public class BuncoStrategy extends Jeu {
 
             } while (scoreTourBunco != 0);
         }
+    }
+
+     */
+
+    /**
+     * Méthode qui calcule le score de chaque joueur pour chacun des tour de jeu
+     * @param joueurCourant : JoueurIterator
+     * @param dIt : DeIterator
+     * @param tourCourant : int
+     */
+    @Override
+    public int calculerScoreTour(Joueur joueurCourant, DeIterator dIt, int tourCourant) {
+
+        int scoreTourBunco, scoreTour, scoreTourTotal = 0;
+        int scoreDe;
+        De currentDe;
+        De previousDe = null;
+
+
+            //Pendant que le score du joueur n'est pas zero
+            //do {
+                resetDeIterator(); //Recommence l'itérateur
+                dIt = getDeIterator();
+                scoreTour = 0;
+                scoreTourBunco = 0;
+
+                //Pendant que l'itérateur à encore des dés
+                while (dIt.hasNext()) {
+
+                    currentDe = dIt.next(); //Prend le prochain dé
+
+                    //currentDe.rollDe(); //Roule le dé
+                    scoreDe = currentDe.getCurrentFace(); //Récupère la face du dé
+
+                    // Si la face du dé est le même que le tour courant
+                    if (scoreDe == tourCourant) {
+                        scoreTourBunco++; //Incrémente le score pour calculer un tour donnant un Bunco
+                    }
+                    if (previousDe != null) {
+                        //Si le dé courant et précedent au la même face
+                        if (currentDe.getCurrentFace() == previousDe.getCurrentFace()) {
+                            scoreTour++; //Incrémente un score pour voir si nous avons 3 dés pareille
+                        }
+                    }
+                    previousDe = currentDe;
+                }
+
+                //Si nous avons trois dés parielle au bon tour = Bunco
+                if (scoreTourBunco == DE_PAR_TOUR) {
+                    scoreTourTotal += BUNCO;
+                    joueurCourant.setScore(scoreTourTotal);
+                    //break;
+                }
+                //Si nous avons trois dés parielle mais pas au bon tour = 5 points
+                else if (scoreTour == DE_PAR_TOUR - 1) {
+                    scoreTourTotal += 5;
+                }
+                //Si nous avons un certain nombres de dés pareille du bon tour
+                else {
+                    scoreTourTotal += scoreTourBunco;
+                }
+
+                return scoreTourTotal;
+                //joueurCourant.setScore(scoreTourTotal);
+
+            //} while (scoreTourBunco != 0);
     }
 
     /**
