@@ -14,7 +14,7 @@ public class JoueurIterator implements Iterator {
     public Joueur[] getTabJoueurs(){
         return joueurs;
     }
-
+    
     @Override
     public boolean hasNext() {
         if(positionJoueur >= (joueurs.length)-1 || joueurs[positionJoueur] == null){
