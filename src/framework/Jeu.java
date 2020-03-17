@@ -1,10 +1,27 @@
 package framework;
 
-
 import java.util.Scanner;
 
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #2
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: Jeu.java
+ Date créé: 2020-02-25
+ Date dern. modif. 2020-03-17
+ *******************************************************/
+
 public abstract class Jeu implements GameStrategy{
+<<<<<<< HEAD
 	
+=======
+
+    //Variable de classe
+>>>>>>> d51dad12678fcf2b658c16560df0d46da2445fdd
     protected DeIterator deIterator;
     protected JoueurIterator joueurIterator;
     JoueurIterator joueurItTrier;
@@ -12,25 +29,31 @@ public abstract class Jeu implements GameStrategy{
     Scanner sc = new Scanner(System.in);
     int nbToursFait = 1;
     int nbJoueurs, nbDes, nbFaceDe, nbTours;
-    CollectionJoueur tabNbJoueurs;
-    CollectionDes tabNbDes;
+    protected CollectionJoueur tabNbJoueurs;
+    protected CollectionDes tabNbDes;
 
+    //Méthodes abstraites puisque les stratégies de jeu ne serons implémenter
+    //que par les differents jeu concrète
     public abstract void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
-    public abstract CollectionJoueur calculerLeVainqueur(int nbT);
+    public abstract CollectionJoueur calculerLeVainqueur();
 
+    /**
+     * Méthode qui sert de template pour démarrer un jeu
+     */
     public final void commencerJeu(){
 
+        //Decide du nombre de joueurs et du nombres de face présente sur un dé
         setNbJoueurs();
         setNbFaceDe();
 
+        //Pendant que nous n'avons pas compléter le nombres de tours requis
         while(nbToursFait <= nbTours){
+            //Crée un nouvel iterateur avec les joueurs courant
             resetJoueurIterator();
-            //while(joueurIterator.hasNext()){
-                //Joueur joueurCourant = joueurIterator.next();
-                calculerScoreTour(joueurIterator, deIterator, nbToursFait);
-                //calculerScoreTour(joueurCourant, deIterator, nbToursFait);
-            //}
-            joueurItTrier = calculerLeVainqueur(nbToursFait).createIterator();
+
+            calculerScoreTour(joueurIterator, deIterator, nbToursFait);
+
+            joueurItTrier = calculerLeVainqueur().createIterator();
             System.out.println("Voici les standings du tour #" + nbToursFait + " :");
 
             for(int t=0; t<joueurItTrier.getTabJoueurs().length; t++){
@@ -80,8 +103,12 @@ public abstract class Jeu implements GameStrategy{
         }
     }
 
-   public void resetDeIterator(){
-        deIterator = tabNbDes.createIterator();
+   public CollectionDes getTabNbDes(){
+        return this.tabNbDes;
+   }
+
+   public DeIterator getDeIterator(){
+        return this.deIterator;
    }
 
    public void setDeIterator(DeIterator dIt){
@@ -95,4 +122,8 @@ public abstract class Jeu implements GameStrategy{
    public void resetJoueurIterator(){
         joueurIterator = tabNbJoueurs.createIterator();
    }
+
+    public void resetDeIterator(){
+        deIterator = tabNbDes.createIterator();
+    }
 }

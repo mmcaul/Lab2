@@ -1,5 +1,18 @@
 package framework;
 
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #2
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: Joueur.java
+ Date créé: 2020-02-25
+ Date dern. modif. 2020-03-17
+ *******************************************************/
+
 public class Joueur implements Comparable {
 
     private int numJoueur, score;

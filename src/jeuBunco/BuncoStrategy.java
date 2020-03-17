@@ -4,6 +4,19 @@ import framework.Jeu;
 import framework.*;
 import framework.Joueur;
 
+/******************************************************
+ Cours:   LOG121
+ Session: H2020
+ Groupe: 04
+ Projet: Laboratoire #2
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
+
+ Professeur : Benoit Galarneau
+ Nom du fichier: BuncoStrategy.java
+ Date créé: 2020-02-25
+ Date dern. modif. 2020-03-17
+ *******************************************************/
+
 public class BuncoStrategy extends Jeu {
 
     private static final int DE_PAR_TOUR = 3;
@@ -24,6 +37,7 @@ public class BuncoStrategy extends Jeu {
             //Pendant que le score du joueur n'est pas zero
             do {
                 resetDeIterator(); //Recommence l'itérateur
+                dIt = getDeIterator();
                 scoreTour = 0;
                 scoreTourBunco = 0;
 
@@ -32,7 +46,7 @@ public class BuncoStrategy extends Jeu {
 
                     currentDe = dIt.next(); //Prend le prochain dé
 
-                    //currentDe.rollDe(); //Roule le dé
+                    currentDe.rollDe(); //Roule le dé
                     scoreDe = currentDe.getCurrentFace(); //Récupère la face du dé
 
                     // Si la face du dé est le même que le tour courant
@@ -69,7 +83,7 @@ public class BuncoStrategy extends Jeu {
         }
     }
 
-    public CollectionJoueur calculerLeVainqueur(int tourNb){
+    public CollectionJoueur calculerLeVainqueur(){
 
         resetJoueurIterator();
         Joueur[] joueursTrier = joueurIterator.getTabJoueurs();
@@ -92,4 +106,9 @@ public class BuncoStrategy extends Jeu {
 
         return colJoueurTrier;
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d51dad12678fcf2b658c16560df0d46da2445fdd
 }
