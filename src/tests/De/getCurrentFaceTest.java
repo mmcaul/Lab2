@@ -1,15 +1,18 @@
 package tests.De;
 
+import org.junit.Before;
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
-import org.junit.jupiter.api.Test;
 
 import framework.De;
 
-class getCurrentFaceTest {
+public class getCurrentFaceTest {
 
+	/*
+	 * Test de la methode getCurrentFace
+	 */
 	@Test
-	void test1() {
+	public void getCurrentFaceTest() {
 		De de1 = new De(4);
 		de1.setCurrentFace(4);
 		int output = de1.getCurrentFace();

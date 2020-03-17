@@ -44,6 +44,4 @@ public class CollectionDes {
     public DeIterator createIterator(){
         return new DeIterator(tabDes);
     }
-
-
 }

@@ -7,7 +7,7 @@ import framework.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class calculerScoreTourTest {
+public class jeuBuncoTest {
 
     @Test
     void BuncoTest(){
@@ -15,9 +15,9 @@ public class calculerScoreTourTest {
         /**
          * Ce test fonctionne mais nous devons mettre en commentaire l'appel
          * a la methode rollDe() dans calculerScoreTour de la class BuncoStrategy
-         * pour assurer que nous avons la bonne face pour un Bunco
+         * pour assurer que nvons la bonne face pour un Bunco
          */
-
+    	
         Jeu newGame = new BuncoStrategy();
 
         CollectionDes colDe = new CollectionDes(3);
@@ -49,7 +49,7 @@ public class calculerScoreTourTest {
         assertEquals(21, j1.getScore());
         assertEquals(1, j1.compareTo(j2));
     }
-
+    
     @Test
     void TroisMauvaisTour(){
 
@@ -58,6 +58,7 @@ public class calculerScoreTourTest {
          * a la methode rollDe() dans calculerScoreTour de la class BuncoStrategy
          * pour assurer que nous avons la bonne face pour un Bunco
          */
+    
 
         Jeu newGame = new BuncoStrategy();
 
@@ -85,6 +86,7 @@ public class calculerScoreTourTest {
         newGame.setTabNbDes(colDe);
         newGame.setDeIterator(deIt);
 
+<<<<<<< HEAD:src/tests/Jeu/calculerScoreTourTest.java
         Joueur jCourant = jIt.next();
 
         int score = newGame.calculerScoreTour(jCourant, deIt,2);
@@ -92,8 +94,13 @@ public class calculerScoreTourTest {
         jCourant.setScore(score);
 
         assertEquals(5, jCourant.getScore());
-    }
+=======
+        int res = newGame.calculerScoreTour(jIt.next(), deIt,2);
 
+        assertEquals(5, res);
+>>>>>>> 3564cd8eb0055a14c71e3a022c22dbe014f94e95:src/tests/Jeu/jeuBuncoTest.java
+    }
+    
     @Test
     void MoinsTroisBonTour(){
 
@@ -194,8 +201,7 @@ public class calculerScoreTourTest {
     }
 
     @Test
-    void ClassementFinal(){
-
-
+    void calculerVainqueurTest(){
+    	
     }
 }
