@@ -7,18 +7,17 @@ import java.util.Scanner;
  Session: H2020
  Groupe: 04
  Projet: Laboratoire #2
- Ã‰tudiant(e)s: MÃ©lissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
-
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
  Professeur : Benoit Galarneau
  Nom du fichier: Jeu.java
- Date crÃ©Ã©: 2020-02-25
+ Date créé: 2020-02-25
  Date dern. modif. 2020-03-17
  *******************************************************/
 
 public abstract class Jeu implements GameStrategy{
 
-    //Variable de classe
 
+    //Variable de classe
     protected DeIterator deIterator;
     protected JoueurIterator joueurIterator;
     JoueurIterator joueurItTrier;
@@ -29,24 +28,24 @@ public abstract class Jeu implements GameStrategy{
     protected CollectionJoueur tabNbJoueurs;
     protected CollectionDes tabNbDes;
 
-    //MÃ©thodes abstraites puisque les stratÃ©gies de jeu ne serons implÃ©menter
-    //que par les differents jeu concrÃ¨te
+    //Méthodes abstraites puisque les stratégies de jeu ne serons implémenter
+    //que par les differents jeu concrète
     //public abstract void calculerScoreTour(JoueurIterator j, DeIterator dIt, int tourCourant);
     public abstract int calculerScoreTour(Joueur j, DeIterator dIt, int tourCourant);
     public abstract CollectionJoueur calculerLeVainqueur();
 
     /**
-     * MÃ©thode qui sert de template pour dÃ©marrer un jeu
+     * Méthode qui sert de template pour démarrer un jeu
      */
     public final void commencerJeu(){
 
-        //Decide du nombre de joueurs et du nombres de face prÃ©sente sur un dÃ©
+        //Decide du nombre de joueurs et du nombres de face présente sur un dé
         setNbJoueurs();
         setNbFaceDe();
 
-        //Pendant que nous n'avons pas complÃ©ter le nombres de tours requis
+        //Pendant que nous n'avons pas compléter le nombres de tours requis
         while(nbToursFait <= nbTours){
-            //CrÃ©e un nouvel iterateur avec le joueur courant
+            //Crée un nouvel iterateur avec le joueur courant
             resetJoueurIterator();
 
             //Pendant qu'il reste des joueurs
@@ -54,17 +53,17 @@ public abstract class Jeu implements GameStrategy{
                 Joueur jCourant = joueurIterator.next(); //Va chercher le joueur courant
 
                 int runningScore = 0; //Variable pour le score courant du joueur
-                //Met la valeur du roule de dÃ¨s dans la variable
+                //Met la valeur du roule de dès dans la variable
                 valueScore = calculerScoreTour(jCourant, deIterator, nbToursFait);
 
                 //Si la valeur est 0 ou un Bunco(21)
                 if(valueScore == 0 || valueScore == 21){
                     jCourant.setScore(valueScore); //Le score du joueur est comme suit
                 } else{
-                    //Pendant que la valeur n'est pas zÃ©ro ou 21
+                    //Pendant que la valeur n'est pas zéro ou 21
                     while(valueScore!=21 && valueScore!=0){
                         valueScore = calculerScoreTour(jCourant, deIterator,nbToursFait);
-                        runningScore += valueScore; //IncrÃ©mente de score du joueur
+                        runningScore += valueScore; //Incrémente de score du joueur
                     }
                     jCourant.setScore(runningScore); //Set le score du joueur
                 }
@@ -77,23 +76,23 @@ public abstract class Jeu implements GameStrategy{
 
             //Pour tout les joueurs dans le jeu
             for(int t=0; t<joueurItTrier.getTabJoueurs().length; t++){
-                //Print les numÃ©ros et les scores
+                //Print les numéros et les scores
                 System.out.println(joueurItTrier.next().toString());
             }
 
             System.out.println();
-            nbToursFait++; //IncrÃ©mente les nombres de tour
+            nbToursFait++; //Incrémente les nombres de tour
         }
     }
 
     /**
-     * MÃ©thode qui determine le nombres de joueurs du jeu
+     * Méthode qui determine le nombres de joueurs du jeu
      */
     public void setNbJoueurs(){
         System.out.println("Combien de joueurs veulent jouer?");
         System.out.print(">>");
 
-        //Prend la prochaine entrÃ©e de clavier et verfie que c'est un int
+        //Prend la prochaine entrée de clavier et verfie que c'est un int
         if(sc.hasNextInt()){
             nbJoueurs = sc.nextInt();
             //Instancie une nouvelle collection de joueurs avec le nombre demander
@@ -101,51 +100,51 @@ public abstract class Jeu implements GameStrategy{
 
             //Pour le nombre de joueurs demander
             for(int i=0; i<nbJoueurs; i++){
-                //CrÃ©e et ajoute un nouveau joueur dans la collection
-                //et lui donne le numÃ©ro correspondant a sa position
+                //Crée et ajoute un nouveau joueur dans la collection
+                //et lui donne le numéro correspondant a sa position
                 tabNbJoueurs.addJoueur(new Joueur(i));
             }
-            //CrÃ©e un itÃ©rateur pour pouvoir parcourir la collection
+            //Crée un itérateur pour pouvoir parcourir la collection
             joueurIterator = tabNbJoueurs.createIterator();
         }
     }
 
     /**
-     * MÃ©thode qui determine le nombres de face qu'on un dÃ©
+     * Méthode qui determine le nombres de face qu'on un dé
      */
     public void setNbFaceDe(){
-        System.out.println("Combien de dÃ©s allez-vous utiliser?");
+        System.out.println("Combien de dés allez-vous utiliser?");
         System.out.print(">>");
 
-        //Prend la prochaine entrÃ©e de clavier et verfie que c'est un int
+        //Prend la prochaine entrée de clavier et verfie que c'est un int
         if(sc.hasNextInt()){
             nbDes = sc.nextInt();
-            //Instancie une nouvelle collection de dÃ©s avec le nombre demander
+            //Instancie une nouvelle collection de dés avec le nombre demander
             tabNbDes = new CollectionDes(nbDes);
 
-            System.out.println("Combien de faces ont vos dÃ©s?");
+            System.out.println("Combien de faces ont vos dés?");
             System.out.print(">>");
 
-            //Prend le prochaine entrÃ©e de clavier et verifie que c'est un int
+            //Prend le prochaine entrée de clavier et verifie que c'est un int
             if(sc.hasNextInt()){
                 nbFaceDe = sc.nextInt();
-                //Met le nombres de tour du jeu Ã©gale au nombres de face du dÃ©
+                //Met le nombres de tour du jeu égale au nombres de face du dé
                 nbTours = nbFaceDe;
             }
 
-            //Pour le nombres de dÃ©s demandÃ©
+            //Pour le nombres de dés demandé
             for(int i=0; i<nbDes; i++){
-                //Ajoute un nouveau dÃ© avec le bon nombres de faces
+                //Ajoute un nouveau dé avec le bon nombres de faces
                 tabNbDes.addDe(new De(nbFaceDe));
             }
-            //CrÃ©e un itÃ©rateur pour pouvoir parcourir la collection
+            //Crée un itérateur pour pouvoir parcourir la collection
             deIterator = tabNbDes.createIterator();
         }
     }
 
     /**
-     * Retourne le deIterateur utilisÃ©
-     * Cette mÃ©thode est nÃ©cessaire pour le resetDeIterator dans BuncoStrategy
+     * Retourne le deIterateur utilisé
+     * Cette méthode est nécessaire pour le resetDeIterator dans BuncoStrategy
      * @return DeIterator
      */
    public DeIterator getDeIterator(){
@@ -153,8 +152,8 @@ public abstract class Jeu implements GameStrategy{
    }
 
     /**
-     * MÃ©thode qui set le DeIterator
-     * Cette mÃ©thode est nÃ©cessaire pour le fonctionnement des tests
+     * Méthode qui set le DeIterator
+     * Cette méthode est nécessaire pour le fonctionnement des tests
      * @param dIt : DeIterator
      */
    public void setDeIterator(DeIterator dIt){
@@ -162,8 +161,8 @@ public abstract class Jeu implements GameStrategy{
    }
 
     /**
-     * MÃ©thode qui set la collection de dÃ©s
-     * Cette mÃ©thode est nÃ©cessaire pour le fonctionnement des tests
+     * Méthode qui set la collection de dés
+     * Cette méthode est nécessaire pour le fonctionnement des tests
      * @param colD : CollectionDes
      */
    public void setTabNbDes(CollectionDes colD){
@@ -171,14 +170,14 @@ public abstract class Jeu implements GameStrategy{
    }
 
     /**
-     * Recommence l'itÃ©ration des joueurs pour le prochain tour
+     * Recommence l'itération des joueurs pour le prochain tour
      */
    public void resetJoueurIterator(){
         joueurIterator = tabNbJoueurs.createIterator();
    }
 
     /**
-     * Recommence l'itÃ©ration des dÃ©s pour le prochain joueur
+     * Recommence l'itération des dés pour le prochain joueur
      */
     public void resetDeIterator(){
         deIterator = tabNbDes.createIterator();

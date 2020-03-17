@@ -5,11 +5,10 @@ package framework;
  Session: H2020
  Groupe: 04
  Projet: Laboratoire #2
- Ã‰tudiant(e)s: MÃ©lissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
-
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
  Professeur : Benoit Galarneau
  Nom du fichier: Joueur.java
- Date crÃ©Ã©: 2020-02-25
+ Date créé: 2020-02-25
  Date dern. modif. 2020-03-17
  *******************************************************/
 
@@ -19,7 +18,7 @@ public class Joueur implements Comparable {
     private int numJoueur, score;
 
     /**
-     * Constructeur par paramÃ¨tre
+     * Constructeur par paramètre
      * @param numJoueur : int
      */
     public Joueur(int numJoueur){
@@ -28,7 +27,7 @@ public class Joueur implements Comparable {
     }
 
     /**
-     * Getter qui retourne le numÃ©ro du joueur
+     * Getter qui retourne le numéro du joueur
      * @return : int
      */
     public int getNumJoueur(){
@@ -52,7 +51,7 @@ public class Joueur implements Comparable {
     }
 
     /**
-     * MÃ©thode qui compare les joueurs basÃ©e sur leurs numÃ©ro de joueurs
+     * Méthode qui compare les joueurs basée sur leurs numéro de joueurs
      * @param o : Object
      * @return : int
      */
@@ -69,11 +68,11 @@ public class Joueur implements Comparable {
         }
     }
 
-
     /**
-     * MÃ©thode qui retourne un String contenant le numÃ©ro du joueur et son score
+     * Méthode qui retourne un String contenant le numéro du joueur et son score
      * @return : String
      */
+
     public String toString(){
         return ("Joueur numero: " + getNumJoueur() + " = Score: " + getScore());
     }

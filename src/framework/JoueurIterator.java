@@ -7,11 +7,10 @@ import java.util.Iterator;
  Session: H2020
  Groupe: 04
  Projet: Laboratoire #2
- Ã‰tudiant(e)s: MÃ©lissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
-
+ Étudiant(e)s: Mélissa McAuley, Anthony Nguyen, Dat Quang Nguyen, Yussef Shehadeh
  Professeur : Benoit Galarneau
  Nom du fichier: JoueurIterator.java
- Date crÃ©Ã©: 2020-02-25
+ Date créé: 2020-02-25
  Date dern. modif. 2020-03-17
  *******************************************************/
 
@@ -22,7 +21,7 @@ public class JoueurIterator implements Iterator {
     int positionJoueur = 0;
 
     /**
-     * Constructeur par paramÃ¨tre
+     * Constructeur par paramètre
      * @param joueurs : Joueur[]
      */
     public JoueurIterator(Joueur[] joueurs){
@@ -37,10 +36,12 @@ public class JoueurIterator implements Iterator {
         return joueurs;
     }
 
+
     /**
-     * MÃ©thode qui dÃ©termine si il y a un prochain joueur prÃ©sent
+     * Méthode qui détermine si il y a un prochain joueur présent
      * @return : boolean
      */
+
     @Override
     public boolean hasNext() {
         if(positionJoueur >= (joueurs.length)-1 || joueurs[positionJoueur] == null){
@@ -51,7 +52,7 @@ public class JoueurIterator implements Iterator {
     }
 
     /**
-     * MÃ©thode qui retourne le prochain Joueur dans la collection
+     * Méthode qui retourne le prochain Joueur dans la collection
      * @return : Joueur
      */
     @Override
