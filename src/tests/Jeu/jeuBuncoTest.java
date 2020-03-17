@@ -7,7 +7,7 @@ import framework.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class calculerScoreTourTest {
+public class jeuBuncoTest {
 
     @Test
     void BuncoTest(){
