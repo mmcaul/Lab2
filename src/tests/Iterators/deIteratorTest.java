@@ -29,17 +29,26 @@ public class deIteratorTest {
 		iterateurDe = colDe.createIterator();
 	}
 	
+	/*
+	 * Test de la method next
+	 */
 	@Test
 	public void nextTest() {
 		De res = iterateurDe.next();
 		assertEquals(res, de1);
 	}
 	
+	/*
+	 * Test de la methode hasNext ou il y a un prochain dans la file
+	 */
 	@Test
 	public void hasNextTrueTest() {
 		assertEquals(iterateurDe.hasNext(), true);
 	}
 	
+	/*
+	 * Test de la methode hasNext ou l'element est le dernier de la file
+	 */
 	@Test
 	public void hasNextFalseTest() {
 		colDe = new CollectionDes(1);

@@ -7,7 +7,7 @@ import framework.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class calculerScoreTourTest {
+public class jeuBuncoTest {
 
     @Test
     void BuncoTest(){
@@ -49,7 +49,7 @@ public class calculerScoreTourTest {
         assertEquals(21, j1.getScore());
         assertEquals(1, j1.compareTo(j2));
     }
-
+    
     @Test
     void TroisMauvaisTour(){
 
@@ -58,6 +58,7 @@ public class calculerScoreTourTest {
          * a la methode rollDe() dans calculerScoreTour de la class BuncoStrategy
          * pour assurer que nous avons la bonne face pour un Bunco
          */
+    
 
         Jeu newGame = new BuncoStrategy();
 
@@ -85,11 +86,11 @@ public class calculerScoreTourTest {
         newGame.setTabNbDes(colDe);
         newGame.setDeIterator(deIt);
 
-        newGame.calculerScoreTour(jIt.next(), deIt,2);
+        int res = newGame.calculerScoreTour(jIt.next(), deIt,2);
 
-        assertEquals(5, j1.getScore());
+        assertEquals(5, res);
     }
-
+    
     @Test
     void MoinsTroisBonTour(){
 
@@ -190,8 +191,7 @@ public class calculerScoreTourTest {
     }
 
     @Test
-    void ClassementFinal(){
-
-
+    void calculerVainqueurTest(){
+    	
     }
 }
