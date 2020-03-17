@@ -44,7 +44,7 @@ public class calculerScoreTourTest {
         newGame.setTabNbDes(colDe);
         newGame.setDeIterator(deIt);
 
-        newGame.calculerScoreTour(jIt, deIt,4);
+        newGame.calculerScoreTour(jIt.next(), deIt,4);
 
         assertEquals(21, j1.getScore());
         assertEquals(1, j1.compareTo(j2));
@@ -85,7 +85,7 @@ public class calculerScoreTourTest {
         newGame.setTabNbDes(colDe);
         newGame.setDeIterator(deIt);
 
-        newGame.calculerScoreTour(jIt, deIt,2);
+        newGame.calculerScoreTour(jIt.next(), deIt,2);
 
         assertEquals(5, j1.getScore());
     }
@@ -111,24 +111,41 @@ public class calculerScoreTourTest {
         JoueurIterator jIt = colJ.createIterator();
 
         De de1 = new De(4);
-        de1.setCurrentFace(4);
         De de2 = new De(4);
-        de2.setCurrentFace(3);
         De de3 = new De(4);
-        de3.setCurrentFace(2);
 
         colDe.addDe(de1);
         colDe.addDe(de2);
         colDe.addDe(de3);
 
-        DeIterator deIt = colDe.createIterator();
-        newGame.setTabNbDes(colDe);
-        newGame.setDeIterator(deIt);
+        Joueur jCourant = jIt.next();
 
-        newGame.calculerScoreTour(jIt, deIt,4);
+        int runningScore = 0;
+
+        for(int i=4; i>0; i--){
+            de1.setCurrentFace(i);
+            de2.setCurrentFace(1);
+            de3.setCurrentFace(2);
+
+            DeIterator deIt = colDe.createIterator();
+
+            newGame.setTabNbDes(colDe);
+            newGame.setDeIterator(deIt);
+
+            int score = newGame.calculerScoreTour(jCourant, deIt,4);
+
+            if(score == 0 || score == 21){
+                runningScore += score;
+                break;
+            } else{
+                runningScore += score;
+            }
+        }
+
+        jCourant.setScore(runningScore);
 
         assertEquals(1, j1.getScore());
-        //NEED TO FIND A WAY TO PROVE SAME PLAYER!!!!
+
     }
 
     @Test
@@ -166,7 +183,7 @@ public class calculerScoreTourTest {
         newGame.setTabNbDes(colDe);
         newGame.setDeIterator(deIt);
 
-        newGame.calculerScoreTour(jIt, deIt,4);
+        newGame.calculerScoreTour(j1, deIt,4);
 
         assertEquals(0, j1.getScore());
         assertEquals(1, j1.compareTo(j2));
