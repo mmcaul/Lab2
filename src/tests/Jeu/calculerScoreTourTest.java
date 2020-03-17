@@ -85,9 +85,13 @@ public class calculerScoreTourTest {
         newGame.setTabNbDes(colDe);
         newGame.setDeIterator(deIt);
 
-        newGame.calculerScoreTour(jIt.next(), deIt,2);
+        Joueur jCourant = jIt.next();
 
-        assertEquals(5, j1.getScore());
+        int score = newGame.calculerScoreTour(jCourant, deIt,2);
+
+        jCourant.setScore(score);
+
+        assertEquals(5, jCourant.getScore());
     }
 
     @Test
